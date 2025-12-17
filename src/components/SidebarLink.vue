@@ -13,7 +13,7 @@ defineProps<{
       :data-tip="label"
     >
       <slot />
-      <span class="is-drawer-close:hidden">{{ label }}</span>
+      <span class="is-drawer-close:hidden h-5">{{ label }}</span>
     </RouterLink>
   </li>
 </template>
