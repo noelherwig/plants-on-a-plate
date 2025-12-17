@@ -1,5 +1,15 @@
 <script setup lang="ts">
 import { ClockIcon } from 'lucide-vue-next'
+
+interface RecipeCardProps {
+  title: string
+  minutes: number
+  categories?: string[]
+}
+
+withDefaults(defineProps<RecipeCardProps>(), {
+  categories: () => [],
+})
 </script>
 
 <template>
@@ -13,13 +23,17 @@ import { ClockIcon } from 'lucide-vue-next'
     </figure>
     <div class="card-body p-4">
       <h3 class="card-title">
-        <span class="truncate">Creamy Tomato Garlic Pasta</span>
+        <span class="truncate">{{ title }}</span>
       </h3>
       <div class="flex items-center text-base-content/60 font-semibold">
         <ClockIcon :size="16" class="me-2" />
-        <span>35 min</span>
-        <span class="mx-2">•</span>
-        <span class="truncate">Italian</span>
+        <span>{{ minutes }} min</span>
+
+        <span v-if="categories.length" class="mx-2"> • </span>
+
+        <span class="truncate">
+          {{ categories.join(', ') }}
+        </span>
       </div>
     </div>
   </div>
