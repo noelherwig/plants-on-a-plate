@@ -4,6 +4,8 @@ import AppDrawer from './components/AppDrawer.vue'
 
 <template>
   <AppDrawer>
-    <RouterView />
+    <main>
+      <RouterView />
+    </main>
   </AppDrawer>
 </template>

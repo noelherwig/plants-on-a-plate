@@ -8,7 +8,7 @@ import AppSidebar from './AppSidebar.vue'
     <input id="my-drawer-4" type="checkbox" class="drawer-toggle" />
     <div class="drawer-content">
       <AppNavbar />
-      <main class="p-4">
+      <main class="p-4 pt-20">
         <slot />
       </main>
     </div>
