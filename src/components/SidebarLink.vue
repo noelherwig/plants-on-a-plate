@@ -9,7 +9,7 @@ defineProps<{
   <li>
     <RouterLink
       :to="to"
-      class="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+      class="is-drawer-close:tooltip is-drawer-close:tooltip-right py-3"
       :data-tip="label"
     >
       <slot />
