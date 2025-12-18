@@ -4,13 +4,15 @@ import AppSidebar from './AppSidebar.vue'
 </script>
 
 <template>
-  <header class="drawer lg:drawer-open">
-    <input id="my-drawer-4" type="checkbox" class="drawer-toggle" />
-    <div class="drawer-content">
+  <header class="drawer lg:drawer-open fixed inset-0">
+    <input id="sidebar-drawer" type="checkbox" class="drawer-toggle" />
+
+    <div class="drawer-content flex flex-col h-screen">
       <AppNavbar />
-      <main class="p-4 pt-20">
+
+      <div class="flex-1 min-h-0 overflow-auto mt-16 p-4">
         <slot />
-      </main>
+      </div>
     </div>
 
     <AppSidebar />
