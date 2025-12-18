@@ -5,6 +5,7 @@ interface RecipeCardProps {
   title: string
   minutes: number
   categories?: string[]
+  imageUrl: string
 }
 
 withDefaults(defineProps<RecipeCardProps>(), {
@@ -15,11 +16,7 @@ withDefaults(defineProps<RecipeCardProps>(), {
 <template>
   <div class="card bg-base-200 shadow-sm">
     <figure>
-      <img
-        src="@/data/images/tomato-garlic-pasta.jpg"
-        alt="recipe"
-        class="max-h-55 w-full h-full object-cover"
-      />
+      <img :src="`/images/${imageUrl}`" alt="recipe" class="max-h-55 w-full h-full object-cover" />
     </figure>
     <div class="card-body p-4">
       <h3 class="card-title">
