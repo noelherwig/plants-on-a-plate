@@ -1,10 +1,12 @@
 <script setup lang="ts">
 import type { Component } from 'vue'
 
-defineProps<{
+interface RecipeStatProps {
   icon: Component
   label: string
-}>()
+}
+
+defineProps<RecipeStatProps>()
 </script>
 
 <template>
