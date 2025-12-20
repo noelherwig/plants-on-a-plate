@@ -4,6 +4,10 @@ export interface Recipe {
   minutes: number
   categories: string[]
   imageUrl: string
+  statistics: {
+    calories: number
+    protein: number
+  }
 }
 
 const recipes: Recipe[] = [
@@ -13,6 +17,10 @@ const recipes: Recipe[] = [
     minutes: 45,
     categories: ['Italian'],
     imageUrl: 'tomato-garlic-pasta.jpg',
+    statistics: {
+      calories: 103,
+      protein: 27,
+    },
   },
   {
     id: '2',
@@ -20,6 +28,10 @@ const recipes: Recipe[] = [
     minutes: 30,
     categories: ['Italian', 'Chicken'],
     imageUrl: 'chicken-garlic-parmesan-pasta.jpg',
+    statistics: {
+      calories: 103,
+      protein: 27,
+    },
   },
   {
     id: '3',
@@ -27,6 +39,10 @@ const recipes: Recipe[] = [
     minutes: 50,
     categories: ['Dips', 'Bacon'],
     imageUrl: 'caramelized-onion-dip-with-crispy-bacon.jpg',
+    statistics: {
+      calories: 103,
+      protein: 27,
+    },
   },
   {
     id: '4',
@@ -34,6 +50,10 @@ const recipes: Recipe[] = [
     minutes: 50,
     categories: ['Sweet', 'Italian'],
     imageUrl: 'caramelized-onion-pasta.jpg',
+    statistics: {
+      calories: 103,
+      protein: 27,
+    },
   },
   {
     id: '5',
@@ -41,6 +61,10 @@ const recipes: Recipe[] = [
     minutes: 25,
     categories: ['American', 'Italian'],
     imageUrl: 'marry-me-pasta.jpg',
+    statistics: {
+      calories: 103,
+      protein: 27,
+    },
   },
   {
     id: '6',
@@ -48,6 +72,10 @@ const recipes: Recipe[] = [
     minutes: 35,
     categories: ['Wrap'],
     imageUrl: 'crispy-chicken-wrap.jpg',
+    statistics: {
+      calories: 103,
+      protein: 27,
+    },
   },
   {
     id: '7',
@@ -55,6 +83,10 @@ const recipes: Recipe[] = [
     minutes: 45,
     categories: ['Shrimp'],
     imageUrl: 'honey-garlic-shrimp.jpg',
+    statistics: {
+      calories: 103,
+      protein: 27,
+    },
   },
   {
     id: '8',
@@ -62,6 +94,10 @@ const recipes: Recipe[] = [
     minutes: 15,
     categories: ['Italian'],
     imageUrl: 'bolognese-pasta.jpg',
+    statistics: {
+      calories: 103,
+      protein: 27,
+    },
   },
   {
     id: '9',
@@ -69,6 +105,10 @@ const recipes: Recipe[] = [
     minutes: 35,
     categories: ['French', 'Soup'],
     imageUrl: 'french-onion-soup-pasta.jpg',
+    statistics: {
+      calories: 103,
+      protein: 27,
+    },
   },
   {
     id: '10',
@@ -76,6 +116,10 @@ const recipes: Recipe[] = [
     minutes: 50,
     categories: ['American', 'Shrimp'],
     imageUrl: 'cajun-shrimp-pasta.jpg',
+    statistics: {
+      calories: 103,
+      protein: 27,
+    },
   },
   {
     id: '11',
@@ -83,6 +127,10 @@ const recipes: Recipe[] = [
     minutes: 20,
     categories: ['Chicken'],
     imageUrl: 'stuffed-chicken-with-spinach.jpg',
+    statistics: {
+      calories: 103,
+      protein: 27,
+    },
   },
 ]
 

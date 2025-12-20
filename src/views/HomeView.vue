@@ -1,8 +1,6 @@
 <script setup lang="ts">
 import RecipeCard from '@/components/RecipeCard.vue'
 import recipes from '@/data/recipes'
-
-console.log(recipes)
 </script>
 
 <template>
