@@ -10,6 +10,7 @@ console.log(recipes)
     <RecipeCard
       v-for="recipe in recipes"
       :key="recipe.id"
+      :id="recipe.id"
       :title="recipe.title"
       :minutes="recipe.minutes"
       :categories="recipe.categories"

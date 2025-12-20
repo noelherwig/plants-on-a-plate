@@ -2,6 +2,7 @@
 import { ClockIcon } from 'lucide-vue-next'
 
 interface RecipeCardProps {
+  id: string
   title: string
   minutes: number
   categories?: string[]
@@ -14,7 +15,13 @@ withDefaults(defineProps<RecipeCardProps>(), {
 </script>
 
 <template>
-  <div class="card bg-base-200 shadow-sm transition-all duration-300 group">
+  <RouterLink
+    :to="{
+      name: 'Recipe',
+      params: { id },
+    }"
+    class="card bg-base-200 shadow-sm transition-all duration-300 group"
+  >
     <figure class="overflow-hidden">
       <img
         :src="`/images/${imageUrl}`"
@@ -39,5 +46,5 @@ withDefaults(defineProps<RecipeCardProps>(), {
         </span>
       </div>
     </div>
-  </div>
+  </RouterLink>
 </template>
