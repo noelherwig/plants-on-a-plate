@@ -14,14 +14,20 @@ withDefaults(defineProps<RecipeCardProps>(), {
 </script>
 
 <template>
-  <div class="card bg-base-200 shadow-sm">
-    <figure>
-      <img :src="`/images/${imageUrl}`" alt="recipe" class="max-h-55 w-full h-full object-cover" />
+  <div class="card bg-base-200 shadow-sm transition-all duration-300 group">
+    <figure class="overflow-hidden">
+      <img
+        :src="`/images/${imageUrl}`"
+        alt="recipe"
+        class="max-h-55 w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+      />
     </figure>
+
     <div class="card-body p-4">
       <h3 class="card-title">
         <span class="truncate">{{ title }}</span>
       </h3>
+
       <div class="flex items-center text-base-content/60 font-semibold">
         <ClockIcon :size="16" class="me-2" />
         <span>{{ minutes }} min</span>
