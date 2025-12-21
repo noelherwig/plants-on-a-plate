@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { Recipe } from '@/data/recipes'
 import RecipeStat from '@/components/RecipeStat.vue'
-import { ClockIcon, FlameIcon, BicepsFlexedIcon, UtensilsCrossedIcon } from 'lucide-vue-next'
+import { ClockIcon, FlameIcon, BicepsFlexedIcon, VeganIcon } from 'lucide-vue-next'
 
 interface RecipeDetailsProps {
   recipe: Recipe
@@ -20,7 +20,7 @@ defineProps<RecipeDetailsProps>()
         <RecipeStat :icon="ClockIcon" :label="`${recipe.minutes} minutes`" />
         <RecipeStat :icon="FlameIcon" :label="`${recipe.statistics.calories} calories`" />
         <RecipeStat :icon="BicepsFlexedIcon" :label="`${recipe.statistics.protein}g protein`" />
-        <RecipeStat :icon="UtensilsCrossedIcon" label="Easily made" />
+        <RecipeStat :icon="VeganIcon" label="100% vegan" class="text-green-500" />
       </div>
       <hr class="my-2 h-0.5 border-t-0 bg-neutral-100 dark:bg-white/10" />
       <p class="max-w-172 text-pretty whitespace-pre-line">{{ recipe.description }}</p>
