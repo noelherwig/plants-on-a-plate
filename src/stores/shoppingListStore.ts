@@ -5,7 +5,22 @@ import { ref } from 'vue'
 export const useShoppingListStore = defineStore('shoppingList', () => {
   const ingredients = ref<Ingredient[]>([])
 
-  const addIngredients = (newIngredients: Ingredient[]) => ingredients.value.push(...newIngredients)
+  const add = (newIngredients: Ingredient[]) => {
+    newIngredients.forEach((newIngredient) => {
+      const existingIngredient = ingredients.value.find(
+        (item) => item.type === newIngredient.type && item.unit === newIngredient.unit,
+      )
 
-  return { ingredients, addIngredients }
+      if (existingIngredient) {
+        existingIngredient.amount = (existingIngredient.amount ?? 0) + (newIngredient.amount ?? 0)
+        return
+      }
+
+      ingredients.value.push({ ...newIngredient })
+    })
+  }
+
+  const clear = () => (ingredients.value = [])
+
+  return { ingredients, add, clear }
 })

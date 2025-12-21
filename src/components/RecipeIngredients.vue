@@ -27,7 +27,7 @@ const adjustedIngredients = computed(() =>
 )
 
 const shoppingList = useShoppingListStore()
-const addRecipeToShoppingList = () => shoppingList.addIngredients(adjustedIngredients.value)
+const addToShoppingList = () => shoppingList.add(adjustedIngredients.value)
 </script>
 
 <template>
@@ -44,7 +44,7 @@ const addRecipeToShoppingList = () => shoppingList.addIngredients(adjustedIngred
 
       <IngredientsList :ingredients="adjustedIngredients" />
 
-      <button class="btn btn-primary ms-auto mt-4" @click="addRecipeToShoppingList">
+      <button class="btn btn-primary ms-auto mt-4" @click="addToShoppingList">
         <PlusIcon /><span>Add to Shopping List</span>
       </button>
     </div>
