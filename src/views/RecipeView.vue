@@ -4,15 +4,7 @@
       <RouterLink to="/" data-tip="Back to recipes" class="btn btn-square btn-ghost">
         <ChevronLeftIcon />
       </RouterLink>
-      <div class="tooltip tooltip-left" data-tip="Add to favorites">
-        <button
-          class="btn btn-square btn-ghost"
-          :class="{ 'not-[&:hover]:btn-secondary btn-soft': isFavorite }"
-          @click="toggleFavorite"
-        >
-          <HeartIcon :class="{ 'fill-secondary text-secondary': isFavorite }" />
-        </button>
-      </div>
+      <FavoriteButton v-if="recipe" :recipe-id="recipe.id" />
     </div>
 
     <template v-if="recipe">
@@ -65,18 +57,13 @@ import {
   BicepsFlexedIcon,
   UtensilsCrossedIcon,
   ChevronLeftIcon,
-  HeartIcon,
 } from 'lucide-vue-next'
 import IngredientsList from '@/components/IngredientsList.vue'
-import { useFavoritesStore } from '@/stores/favoritesStore'
+import FavoriteButton from '@/components/FavoriteButton.vue'
 
 const route = useRoute()
-const favorites = useFavoritesStore()
 
 const recipe: ComputedRef<Recipe | undefined> = computed(() =>
   recipes.find((recipe) => recipe.id === route.params.id),
 )
-
-const isFavorite = computed(() => recipe.value && favorites.isFavorite(recipe.value.id))
-const toggleFavorite = () => recipe.value && favorites.toggle(recipe.value.id)
 </script>
