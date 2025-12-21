@@ -23,10 +23,10 @@ defineProps<RecipeDetailsProps>()
         <RecipeStat :icon="UtensilsCrossedIcon" label="Easily made" />
       </div>
       <hr class="my-2 h-0.5 border-t-0 bg-neutral-100 dark:bg-white/10" />
-      <p>Some description here</p>
+      <p class="max-w-172 text-pretty whitespace-pre-line">{{ recipe.description }}</p>
     </div>
 
-    <figure class="rounded-t-lg rounded-b-none md:rounded-s-none md:rounded-e-lg max-h-67.5">
+    <figure class="rounded-t-lg rounded-b-none md:rounded-s-none md:rounded-e-lg">
       <img
         :src="`/images/${recipe.imageUrl}`"
         alt="Recipe"

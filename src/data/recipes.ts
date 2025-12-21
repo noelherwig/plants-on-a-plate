@@ -4,6 +4,7 @@ export interface Recipe {
   minutes: number
   categories: string[]
   imageUrl: string
+  description: string
   statistics: {
     calories: number
     protein: number
@@ -25,6 +26,8 @@ const recipes: Recipe[] = [
     minutes: 45,
     categories: ['Italian'],
     imageUrl: 'tomato-garlic-pasta.jpg',
+    description:
+      'This recipe uses lots of garlic, so you know it is going to be full of flavor. The creamy rigatoni pasta, together with the sweet, caramelized cherry tomatoes and a hint of chili make for a quick and tasty meal that you will surely make again in the future!\n\n While the dish can be frozen and stored for a while, it is recommended to heat it again in a pan instead of in a microwave. This keeps the sauce creamy and delicious.',
     statistics: {
       calories: 103,
       protein: 27,
