@@ -1,5 +1,20 @@
 <template>
   <div class="container max-w-300 mx-auto">
+    <div class="flex justify-between mb-4">
+      <RouterLink to="/" data-tip="Back to recipes" class="btn btn-square btn-ghost">
+        <ChevronLeftIcon />
+      </RouterLink>
+      <div class="tooltip tooltip-left" data-tip="Add to favorites">
+        <button
+          class="btn btn-square btn-ghost"
+          :class="{ 'not-[&:hover]:btn-secondary btn-soft': isFavorite }"
+          @click="toggleFavorite"
+        >
+          <HeartIcon :class="{ 'fill-secondary text-secondary': isFavorite }" />
+        </button>
+      </div>
+    </div>
+
     <template v-if="recipe">
       <div class="card md:card-side bg-base-200 shadow-sm flex-col-reverse md:flex-row mb-4">
         <div class="card-body flex p-4 gap-y-2">
@@ -13,6 +28,7 @@
             <RecipeStat :icon="UtensilsCrossedIcon" label="Easily made" />
           </div>
           <hr class="my-2 h-0.5 border-t-0 bg-neutral-100 dark:bg-white/10" />
+          <p>Some description here</p>
         </div>
 
         <figure class="rounded-t-lg rounded-b-none md:rounded-s-none md:rounded-e-lg max-h-67.5">
@@ -43,12 +59,24 @@ import recipes from '@/data/recipes'
 import { computed, type ComputedRef } from 'vue'
 import { useRoute } from 'vue-router'
 import RecipeStat from '@/components/RecipeStat.vue'
-import { ClockIcon, FlameIcon, BicepsFlexedIcon, UtensilsCrossedIcon } from 'lucide-vue-next'
+import {
+  ClockIcon,
+  FlameIcon,
+  BicepsFlexedIcon,
+  UtensilsCrossedIcon,
+  ChevronLeftIcon,
+  HeartIcon,
+} from 'lucide-vue-next'
 import IngredientsList from '@/components/IngredientsList.vue'
+import { useFavoritesStore } from '@/stores/favoritesStore'
 
 const route = useRoute()
+const favorites = useFavoritesStore()
 
 const recipe: ComputedRef<Recipe | undefined> = computed(() =>
   recipes.find((recipe) => recipe.id === route.params.id),
 )
+
+const isFavorite = computed(() => recipe.value && favorites.isFavorite(recipe.value.id))
+const toggleFavorite = () => recipe.value && favorites.toggle(recipe.value.id)
 </script>
