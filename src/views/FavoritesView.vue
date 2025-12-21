@@ -15,11 +15,7 @@ const favoriteRecipes = computed(() =>
     <RecipeCard
       v-for="recipe in favoriteRecipes.length ? favoriteRecipes : []"
       :key="recipe.id"
-      :id="recipe.id"
-      :title="recipe.title"
-      :minutes="recipe.minutes"
-      :categories="recipe.categories"
-      :image-url="recipe.imageUrl"
+      :recipe="recipe"
     />
     <p v-if="!favoriteRecipes.length" class="col-span-full text-center text-base-content/60">
       You haven't added any favorite recipes yet!
