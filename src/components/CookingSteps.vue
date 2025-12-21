@@ -18,7 +18,7 @@ const checked = ref<Record<string, boolean>>(
     <h2 class="card-title lg:text-2xl mb-2">Cooking steps</h2>
 
     <div
-      v-for="(step, index) in props.steps"
+      v-for="(step, index) in steps"
       :key="index"
       class="collapse border border-base-300 bg-base-100"
     >

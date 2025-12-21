@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { Ingredient } from '@/data/recipes'
 import { PlusIcon, UsersIcon } from 'lucide-vue-next'
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 import NumberStepper from './NumberStepper.vue'
 import IngredientsList from './IngredientsList.vue'
 import { useShoppingListStore } from '@/stores/shoppingListStore'
@@ -12,11 +12,22 @@ interface RecipeIngredientsProps {
 
 const props = defineProps<RecipeIngredientsProps>()
 
-const shoppingList = useShoppingListStore()
-
 const servings = ref(2)
+const adjustedIngredients = computed(() =>
+  props.ingredients.map((ingredient) => {
+    if (ingredient.amount === undefined) {
+      return { ...ingredient, adjustedAmount: undefined }
+    }
 
-const addRecipeToShoppingList = () => shoppingList.addIngredients(props.ingredients)
+    return {
+      ...ingredient,
+      amount: ingredient.amount * servings.value,
+    }
+  }),
+)
+
+const shoppingList = useShoppingListStore()
+const addRecipeToShoppingList = () => shoppingList.addIngredients(adjustedIngredients.value)
 </script>
 
 <template>
@@ -31,7 +42,7 @@ const addRecipeToShoppingList = () => shoppingList.addIngredients(props.ingredie
         </div>
       </div>
 
-      <IngredientsList :ingredients="ingredients" :servings="servings" />
+      <IngredientsList :ingredients="adjustedIngredients" />
 
       <button class="btn btn-primary ms-auto mt-4" @click="addRecipeToShoppingList">
         <PlusIcon /><span>Add to Shopping List</span>

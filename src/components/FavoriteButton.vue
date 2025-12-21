@@ -27,14 +27,14 @@ const toggleFavorite = () => favorites.toggle(props.recipeId)
       class="btn btn-square btn-ghost"
       :class="{
         'not-[&:hover]:btn-secondary': isFavorite,
-        'btn-soft': isFavorite && props.type === 'default',
+        'btn-soft': isFavorite && type === 'default',
       }"
       @click="toggleFavorite"
     >
       <HeartIcon
         :class="{
           'fill-secondary text-secondary': isFavorite,
-          'text-secondary': props.type === 'secondary',
+          'text-secondary': type === 'secondary',
         }"
       />
     </button>

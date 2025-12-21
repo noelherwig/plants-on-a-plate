@@ -34,7 +34,7 @@ const goToRandomRecipe = () => {
   <button
     class="btn sm:btn-lg btn-soft gap-4"
     @click="goToRandomRecipe"
-    :class="props.type === 'default' ? 'btn-success' : 'btn-secondary'"
+    :class="type === 'default' ? 'btn-success' : 'btn-secondary'"
     :disabled="!recipes.length"
   >
     <DicesIcon />
