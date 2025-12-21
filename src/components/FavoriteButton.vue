@@ -19,7 +19,10 @@ const toggleFavorite = () => favorites.toggle(props.recipeId)
 </script>
 
 <template>
-  <div class="tooltip tooltip-left" data-tip="Add to favorites">
+  <div
+    class="tooltip tooltip-left"
+    :data-tip="isFavorite ? 'Remove from favorites' : 'Add to favorites'"
+  >
     <button
       class="btn btn-square btn-ghost"
       :class="{

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { LeafIcon } from 'lucide-vue-next'
+import { HeartIcon, LeafIcon } from 'lucide-vue-next'
 import SidebarLink from './SidebarLink.vue'
 </script>
 
@@ -15,8 +15,8 @@ import SidebarLink from './SidebarLink.vue'
           <LeafIcon :size="20" />
         </SidebarLink>
 
-        <SidebarLink to="/about" label="About">
-          <LeafIcon :size="20" />
+        <SidebarLink to="/favorites" label="Favorites">
+          <HeartIcon :size="20" />
         </SidebarLink>
       </ul>
     </div>

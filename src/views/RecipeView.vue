@@ -2,7 +2,7 @@
 import type { Recipe } from '@/data/recipes'
 import recipes from '@/data/recipes'
 import { computed, type ComputedRef } from 'vue'
-import { useRoute } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import RecipeStat from '@/components/RecipeStat.vue'
 import {
   ClockIcon,
@@ -15,6 +15,7 @@ import IngredientsList from '@/components/IngredientsList.vue'
 import FavoriteButton from '@/components/FavoriteButton.vue'
 
 const route = useRoute()
+const router = useRouter()
 
 const recipe: ComputedRef<Recipe | undefined> = computed(() =>
   recipes.find((recipe) => recipe.id === route.params.id),
@@ -24,9 +25,11 @@ const recipe: ComputedRef<Recipe | undefined> = computed(() =>
 <template>
   <div class="container max-w-300 mx-auto">
     <div class="flex justify-between mb-4">
-      <RouterLink to="/" data-tip="Back to recipes" class="btn btn-square btn-ghost">
-        <ChevronLeftIcon />
-      </RouterLink>
+      <div class="tooltip tooltip-right" data-tip="Back">
+        <button @click="router.back()" class="btn btn-square btn-ghost">
+          <ChevronLeftIcon />
+        </button>
+      </div>
       <FavoriteButton v-if="recipe" :recipe-id="recipe.id" />
     </div>
 
@@ -64,6 +67,10 @@ const recipe: ComputedRef<Recipe | undefined> = computed(() =>
       </div>
     </template>
 
-    <template v-else>Recept niet gevonden</template>
+    <template v-else>
+      <p v-if="!recipe" class="col-span-full text-center text-base-content/60">
+        This recipe could not be found.
+      </p>
+    </template>
   </div>
 </template>
