@@ -1,5 +1,10 @@
 <script setup lang="ts">
+import IngredientsList from '@/components/IngredientsList.vue'
+import { useShoppingListStore } from '@/stores/shoppingListStore'
 import { ShoppingBasketIcon } from 'lucide-vue-next'
+
+const shoppingList = useShoppingListStore()
+const ingredients = shoppingList.ingredients
 </script>
 
 <template>
@@ -13,10 +18,7 @@ import { ShoppingBasketIcon } from 'lucide-vue-next'
 
     <div class="card bg-base-200 shadow-sm">
       <div class="card-body p-4 gap-y-2">
-        <label class="label flex items-center gap-2 mb-0.5">
-          <input type="checkbox" class="checkbox" />
-          <span>Hoi</span>
-        </label>
+        <IngredientsList :ingredients="ingredients" />
       </div>
     </div>
 

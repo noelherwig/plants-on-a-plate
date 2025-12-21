@@ -4,6 +4,7 @@ import { PlusIcon, UsersIcon } from 'lucide-vue-next'
 import { ref } from 'vue'
 import NumberStepper from './NumberStepper.vue'
 import IngredientsList from './IngredientsList.vue'
+import { useShoppingListStore } from '@/stores/shoppingListStore'
 
 interface RecipeIngredientsProps {
   ingredients: Ingredient[]
@@ -11,9 +12,11 @@ interface RecipeIngredientsProps {
 
 const props = defineProps<RecipeIngredientsProps>()
 
+const shoppingList = useShoppingListStore()
+
 const servings = ref(2)
 
-const addRecipeToShoppingList = () => console.log('Add recipe', props.ingredients)
+const addRecipeToShoppingList = () => shoppingList.addIngredients(props.ingredients)
 </script>
 
 <template>
