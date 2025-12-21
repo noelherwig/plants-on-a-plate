@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import RecipeCard from '@/components/RecipeCard.vue'
 import RecipeSearch from '@/components/RecipeSearch.vue'
-import SupriseMeButton from '@/components/SupriseMeButton.vue'
+import RandomRecipeButton from '@/components/RandomRecipeButton.vue'
 import useSearch from '@/composable/useSearch'
 import recipes from '@/data/recipes'
 import { useFavoritesStore } from '@/stores/favoritesStore'
@@ -28,7 +28,7 @@ const { searchResults } = useSearch(searchTerm, favoriteRecipes.value)
       <RecipeSearch v-model="searchTerm" />
       <div class="flex items-center">
         <p class="mx-4">or</p>
-        <SupriseMeButton />
+        <RandomRecipeButton :recipes="favoriteRecipes" type="secondary" label="Random favorite" />
       </div>
     </div>
 

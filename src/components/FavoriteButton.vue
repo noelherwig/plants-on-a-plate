@@ -27,7 +27,7 @@ const toggleFavorite = () => favorites.toggle(props.recipeId)
       class="btn btn-square btn-ghost"
       :class="{
         'not-[&:hover]:btn-secondary': isFavorite,
-        'btn-soft': isFavorite && props.type !== 'secondary',
+        'btn-soft': isFavorite && props.type === 'default',
       }"
       @click="toggleFavorite"
     >

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import RecipeCard from '@/components/RecipeCard.vue'
 import RecipeSearch from '@/components/RecipeSearch.vue'
-import SupriseMeButton from '@/components/SupriseMeButton.vue'
+import RandomRecipeButton from '@/components/RandomRecipeButton.vue'
 import useSearch from '@/composable/useSearch'
 import { LeafIcon } from 'lucide-vue-next'
 import { ref } from 'vue'
@@ -22,7 +22,7 @@ const { searchResults } = useSearch(searchTerm, recipes)
       <RecipeSearch v-model="searchTerm" />
       <div class="flex items-center">
         <p class="mx-4">or</p>
-        <SupriseMeButton />
+        <RandomRecipeButton :recipes="recipes" />
       </div>
     </div>
 

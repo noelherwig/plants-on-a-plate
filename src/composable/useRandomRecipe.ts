@@ -1,6 +1,6 @@
-import recipes from '@/data/recipes'
+import { type Recipe } from '@/data/recipes'
 
-export default function useRandomRecipe() {
+export default function useRandomRecipe(recipes: Recipe[] = []) {
   const getRandomRecipe = () => {
     if (recipes.length === 0) {
       return null
