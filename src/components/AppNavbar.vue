@@ -8,6 +8,6 @@ import { PanelRightOpenIcon } from 'lucide-vue-next'
       <PanelRightOpenIcon :size="16" class="rotate-180" />
     </label>
 
-    <div>Plants On A Plate</div>
+    <div class="font-bold">Plants On A Plate</div>
   </nav>
 </template>
