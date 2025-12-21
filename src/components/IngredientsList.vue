@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import type { Ingredient } from '@/data/recipes'
+import { UsersIcon } from 'lucide-vue-next'
 import { computed, ref } from 'vue'
+import NumberStepper from './NumberStepper.vue'
 
 interface IngredientsListProps {
   ingredients: Ingredient[]
@@ -8,9 +10,10 @@ interface IngredientsListProps {
 }
 
 const props = withDefaults(defineProps<IngredientsListProps>(), {
-  servings: 1,
+  servings: 2,
 })
 
+const servings = ref(props.servings)
 const checked = ref<Record<string, boolean>>({})
 const adjustedIngredients = computed(() =>
   props.ingredients.map((ingredient) => {
@@ -20,7 +23,7 @@ const adjustedIngredients = computed(() =>
 
     return {
       ...ingredient,
-      adjustedAmount: ingredient.amount * props.servings,
+      adjustedAmount: ingredient.amount * servings.value,
     }
   }),
 )
@@ -29,7 +32,14 @@ const adjustedIngredients = computed(() =>
 <template>
   <div class="card bg-base-200 shadow-sm">
     <div class="card-body p-4 gap-y-2">
-      <h2 class="card-title lg:text-2xl mb-2">Ingredients</h2>
+      <div class="flex justify-between items-start mb-2">
+        <h2 class="card-title lg:text-2xl">Ingredients</h2>
+
+        <div class="flex items-center gap-2">
+          <UsersIcon :size="20" />
+          <NumberStepper v-model="servings" :min="1" :max="100" />
+        </div>
+      </div>
 
       <label
         v-for="(ingredient, index) in adjustedIngredients"
