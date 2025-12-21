@@ -5,9 +5,10 @@ import SupriseMeButton from '@/components/SupriseMeButton.vue'
 import useSearch from '@/composable/useSearch'
 import { LeafIcon } from 'lucide-vue-next'
 import { ref } from 'vue'
+import recipes from '@/data/recipes'
 
 const searchTerm = ref('')
-const { searchResults } = useSearch(searchTerm)
+const { searchResults } = useSearch(searchTerm, recipes)
 </script>
 
 <template>
@@ -19,7 +20,6 @@ const { searchResults } = useSearch(searchTerm)
 
     <div class="flex flex-col sm:flex-row items-end">
       <RecipeSearch v-model="searchTerm" />
-
       <div class="flex items-center">
         <p class="mx-4">or</p>
         <SupriseMeButton />
@@ -33,7 +33,7 @@ const { searchResults } = useSearch(searchTerm)
     </div>
 
     <p v-if="!searchResults.length" class="col-span-full text-center text-base-content/60">
-      No recipes found with {{ searchTerm }}. Try a different search term!
+      No recipes found with "{{ searchTerm }}". Try a different search term!
     </p>
   </div>
 </template>
