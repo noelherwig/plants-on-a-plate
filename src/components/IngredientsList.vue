@@ -32,8 +32,8 @@ const adjustedIngredients = computed(() =>
       <h2 class="card-title lg:text-2xl mb-2">Ingredients</h2>
 
       <label
-        v-for="ingredient in adjustedIngredients"
-        :key="ingredient.type"
+        v-for="(ingredient, index) in adjustedIngredients"
+        :key="index"
         class="label flex items-center gap-2 mb-0.5"
       >
         <input type="checkbox" class="checkbox" v-model="checked[ingredient.type]" />

@@ -9,6 +9,7 @@ export interface Recipe {
     protein: number
   }
   ingredients: Ingredient[]
+  steps: string[]
 }
 
 export interface Ingredient {
@@ -40,6 +41,16 @@ const recipes: Recipe[] = [
       { type: 'Chili flakes' },
       { type: 'Olive oil' },
       { type: 'Salt & pepper' },
+    ],
+    steps: [
+      'Cook the rigatoni according to the instructions on the package. Add enough salt to the cooking water beforehand. Reserve a cup of pasta water while draining the pasta.',
+      'Peel the garlic cloves and crush them using a garlic press. Dice the onion as well and add it to the pan together with the garlic. Cut all the cherry tomatoes in half, but set them aside for now.',
+      'Heat the olive oil in a large pan over medium heat. Sauté the garlic and onion for about 5 minutes until soft and fragrant.',
+      'Add the halved cherry tomatoes to the pan. Cook them for 10-15 minutes until soft and starting to caramelize. Stir regularly. Use a little of the reserved pasta water to deglaze the pan.',
+      'Add the tomato paste along with some chili flakes to taste. Let it simmer gently for 5 minutes, stirring occasionally.',
+      'Add the plant-based cooking cream and stir well until the sauce has an even colour. Let it simmer gently for 5-10 minutes, stirring occasionally.',
+      'Taste and season with paprika powder, garlic powder, salt, pepper, and extra chili flakes if desired.',
+      'Add the cooked rigatoni and chopped parsley to the sauce. Mix well and let everything sit over low heat for 5 minutes so the flavours can combine.',
     ],
   },
   // {
