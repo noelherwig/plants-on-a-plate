@@ -15,16 +15,19 @@ const { searchResults } = useSearch(searchTerm)
       <LeafIcon class="text-green-500" />
       All {{ recipes.length }} plant-based recipes
     </h1>
-    <div class="flex items-center gap-4">
-      <label class="input lg:input-lg w-full">
+
+    <div class="flex flex-col sm:flex-row items-end">
+      <label class="input w-full sm:w-auto grow sm:input-lg mb-4 sm:mb-0">
         <SearchIcon class="opacity-50" />
         <input type="search" placeholder="Search" v-model="searchTerm" />
       </label>
-      <span>or</span>
-      <button class="btn lg:btn-lg btn-success btn-soft gap-4">
-        <PartyPopperIcon />
-        Suprise me!
-      </button>
+      <div class="flex items-center">
+        <p class="mx-4">or</p>
+        <button class="btn sm:btn-lg btn-success btn-soft gap-4">
+          <PartyPopperIcon />
+          Suprise me!
+        </button>
+      </div>
     </div>
 
     <hr class="my-8 h-0.5 border-t-0 bg-neutral-100 dark:bg-white/10" />
