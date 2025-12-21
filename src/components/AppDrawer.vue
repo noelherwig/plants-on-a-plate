@@ -10,7 +10,7 @@ import AppSidebar from './AppSidebar.vue'
     <div class="drawer-content flex flex-col h-screen">
       <AppNavbar />
 
-      <div class="flex-1 min-h-0 overflow-scroll mt-16 p-4">
+      <div class="flex-1 min-h-0 overflow-y-scroll mt-16 p-4">
         <slot />
       </div>
     </div>

@@ -42,11 +42,12 @@ const { searchResults } = useSearch(searchTerm, favoriteRecipes)
       v-if="!searchResults.length && favoriteRecipes.length"
       class="col-span-full text-center text-base-content/60"
     >
-      No recipes found with "{{ searchTerm }}". Try a different search term!
+      No recipes found with "{{ searchTerm }}". Try a different search term.
     </p>
 
     <p v-if="!favoriteRecipes.length" class="col-span-full text-center text-base-content/60">
-      You haven't added any favorite recipes yet!
+      You haven't added any favorite recipes yet! Take a look at
+      <RouterLink :to="'/'" class="link text-green-500">all recipes</RouterLink>.
     </p>
   </div>
 </template>
