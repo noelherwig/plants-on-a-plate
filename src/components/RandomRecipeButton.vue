@@ -19,7 +19,6 @@ const router = useRouter()
 
 const { getRandomRecipe } = useRandomRecipe(props.recipes)
 const randomRecipe = getRandomRecipe()
-
 const goToRandomRecipe = () => {
   if (randomRecipe) {
     router.push(`/recipe/${randomRecipe.id}`)

@@ -14,7 +14,7 @@ const favoriteRecipes = computed(() =>
 )
 
 const searchTerm = ref('')
-const { searchResults } = useSearch(searchTerm, favoriteRecipes.value)
+const { searchResults } = useSearch(searchTerm, favoriteRecipes)
 </script>
 
 <template>
@@ -28,7 +28,7 @@ const { searchResults } = useSearch(searchTerm, favoriteRecipes.value)
       <RecipeSearch v-model="searchTerm" />
       <div class="flex items-center">
         <p class="mx-4">or</p>
-        <RandomRecipeButton :recipes="favoriteRecipes" type="secondary" label="Random favorite" />
+        <RandomRecipeButton :recipes="favoriteRecipes" type="secondary" />
       </div>
     </div>
 

@@ -7,8 +7,9 @@ import { LeafIcon } from 'lucide-vue-next'
 import { ref } from 'vue'
 import recipes from '@/data/recipes'
 
+const allRecipes = ref(recipes)
 const searchTerm = ref('')
-const { searchResults } = useSearch(searchTerm, recipes)
+const { searchResults } = useSearch(searchTerm, allRecipes)
 </script>
 
 <template>
@@ -22,7 +23,7 @@ const { searchResults } = useSearch(searchTerm, recipes)
       <RecipeSearch v-model="searchTerm" />
       <div class="flex items-center">
         <p class="mx-4">or</p>
-        <RandomRecipeButton :recipes="recipes" />
+        <RandomRecipeButton :recipes="allRecipes" />
       </div>
     </div>
 
