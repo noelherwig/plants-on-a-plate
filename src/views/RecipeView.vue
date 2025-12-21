@@ -3,7 +3,7 @@ import type { Recipe } from '@/data/recipes'
 import recipes from '@/data/recipes'
 import { computed, type ComputedRef } from 'vue'
 import { useRoute } from 'vue-router'
-import IngredientsList from '@/components/IngredientsList.vue'
+import RecipeIngredients from '@/components/RecipeIngredients.vue'
 import FavoriteButton from '@/components/FavoriteButton.vue'
 import BackButton from '@/components/BackButton.vue'
 import RecipeDetails from '@/components/RecipeDetails.vue'
@@ -27,7 +27,7 @@ const recipe: ComputedRef<Recipe | undefined> = computed(() =>
       <RecipeDetails :recipe="recipe" />
 
       <div class="grid lg:grid-cols-3 gap-4">
-        <IngredientsList :ingredients="recipe.ingredients" :servings="4" />
+        <RecipeIngredients :ingredients="recipe.ingredients" />
         <CookingSteps :steps="recipe.steps" class="lg:col-span-2" />
       </div>
     </template>
