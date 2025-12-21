@@ -1,3 +1,26 @@
+<script setup lang="ts">
+import type { Recipe } from '@/data/recipes'
+import recipes from '@/data/recipes'
+import { computed, type ComputedRef } from 'vue'
+import { useRoute } from 'vue-router'
+import RecipeStat from '@/components/RecipeStat.vue'
+import {
+  ClockIcon,
+  FlameIcon,
+  BicepsFlexedIcon,
+  UtensilsCrossedIcon,
+  ChevronLeftIcon,
+} from 'lucide-vue-next'
+import IngredientsList from '@/components/IngredientsList.vue'
+import FavoriteButton from '@/components/FavoriteButton.vue'
+
+const route = useRoute()
+
+const recipe: ComputedRef<Recipe | undefined> = computed(() =>
+  recipes.find((recipe) => recipe.id === route.params.id),
+)
+</script>
+
 <template>
   <div class="container max-w-300 mx-auto">
     <div class="flex justify-between mb-4">
@@ -44,26 +67,3 @@
     <template v-else>Recept niet gevonden</template>
   </div>
 </template>
-
-<script setup lang="ts">
-import type { Recipe } from '@/data/recipes'
-import recipes from '@/data/recipes'
-import { computed, type ComputedRef } from 'vue'
-import { useRoute } from 'vue-router'
-import RecipeStat from '@/components/RecipeStat.vue'
-import {
-  ClockIcon,
-  FlameIcon,
-  BicepsFlexedIcon,
-  UtensilsCrossedIcon,
-  ChevronLeftIcon,
-} from 'lucide-vue-next'
-import IngredientsList from '@/components/IngredientsList.vue'
-import FavoriteButton from '@/components/FavoriteButton.vue'
-
-const route = useRoute()
-
-const recipe: ComputedRef<Recipe | undefined> = computed(() =>
-  recipes.find((recipe) => recipe.id === route.params.id),
-)
-</script>
