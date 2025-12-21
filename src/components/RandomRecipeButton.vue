@@ -17,9 +17,13 @@ const props = withDefaults(defineProps<SupriseMeButtonProps>(), {
 
 const router = useRouter()
 
-const { getRandomRecipe } = useRandomRecipe(props.recipes)
-const randomRecipe = getRandomRecipe()
 const goToRandomRecipe = () => {
+  if (!props.recipes.length) {
+    return
+  }
+
+  const { getRandomRecipe } = useRandomRecipe(props.recipes)
+  const randomRecipe = getRandomRecipe()
   if (randomRecipe) {
     router.push(`/recipe/${randomRecipe.id}`)
   }
@@ -31,6 +35,7 @@ const goToRandomRecipe = () => {
     class="btn sm:btn-lg btn-soft gap-4"
     @click="goToRandomRecipe"
     :class="props.type === 'default' ? 'btn-success' : 'btn-secondary'"
+    :disabled="!recipes.length"
   >
     <DicesIcon />
     {{ label }}
