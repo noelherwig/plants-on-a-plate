@@ -5,9 +5,12 @@ import { computed } from 'vue'
 
 interface FavoriteButtonProps {
   recipeId: string
+  type?: 'default' | 'secondary'
 }
 
-const props = defineProps<FavoriteButtonProps>()
+const props = withDefaults(defineProps<FavoriteButtonProps>(), {
+  type: 'default',
+})
 
 const favorites = useFavoritesStore()
 
@@ -19,10 +22,18 @@ const toggleFavorite = () => favorites.toggle(props.recipeId)
   <div class="tooltip tooltip-left" data-tip="Add to favorites">
     <button
       class="btn btn-square btn-ghost"
-      :class="{ 'not-[&:hover]:btn-secondary btn-soft': isFavorite }"
+      :class="{
+        'not-[&:hover]:btn-secondary': isFavorite,
+        'btn-soft': isFavorite && props.type !== 'secondary',
+      }"
       @click="toggleFavorite"
     >
-      <HeartIcon :class="{ 'fill-secondary text-secondary': isFavorite }" />
+      <HeartIcon
+        :class="{
+          'fill-secondary text-secondary': isFavorite,
+          'text-secondary': props.type === 'secondary',
+        }"
+      />
     </button>
   </div>
 </template>
