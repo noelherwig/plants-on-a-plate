@@ -10,7 +10,6 @@ This is a **Vue 3 + TypeScript** project created to practice building a modern, 
 - [Technologies Used](#%EF%B8%8F-technologies-used)
 - [Features](#-features)
 - [Accessibility](#-accessibility)
-- [Contributing](#-contributing)
 - [License](#-license)
 
 ## ⚡ Project Setup
