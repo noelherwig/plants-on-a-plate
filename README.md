@@ -6,8 +6,8 @@ This is a **Vue 3 + TypeScript** project created to practice building a modern, 
 
 - [Project Setup](#-project-setup)
 - [Getting Started](#-getting-started)
-- [Folder Structure](#-folder-structure)
-- [Technologies Used](#-technologies-used)
+- [Folder Structure](#%EF%B8%8F-folder-structure)
+- [Technologies Used](#%EF%B8%8F-technologies-used)
 - [Features](#-features)
 - [Accessibility](#-accessibility)
 - [Contributing](#-contributing)
