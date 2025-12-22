@@ -1,70 +1,77 @@
-# plants-on-a-plate
+# 🌱 Plants On A Plate
 
-This template should help get you started developing with Vue 3 in Vite.
+This is a **Vue 3 + TypeScript** project created to practice building a modern, responsive, and accessible web application for plant-based recipes. It demonstrates **component-based architecture**, **state management with Pinia**, **composables**, **TailwindCSS + DaisyUI styling**, and other modern frontend best practices.
 
-## Recommended IDE Setup
+## 📑 Table of Contents
 
-[VS Code](https://code.visualstudio.com/) + [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+- [Project Setup](#project-setup)
+- [Getting Started](#getting-started)
+- [Folder Structure](#folder-structure)
+- [Technologies Used](#technologies-used)
+- [Features](#features)
+- [Accessibility](#accessibility)
+- [Contributing](#contributing)
+- [License](#license)
 
-## Recommended Browser Setup
+## ⚡ Project Setup
 
-- Chromium-based browsers (Chrome, Edge, Brave, etc.):
-  - [Vue.js devtools](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd)
-  - [Turn on Custom Object Formatter in Chrome DevTools](http://bit.ly/object-formatters)
-- Firefox:
-  - [Vue.js devtools](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)
-  - [Turn on Custom Object Formatter in Firefox DevTools](https://fxdx.dev/firefox-devtools-custom-object-formatters/)
+Install dependencies:
 
-## Type Support for `.vue` Imports in TS
-
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vite.dev/config/).
-
-## Project Setup
-
-```sh
+```bash
 npm install
 ```
 
-### Compile and Hot-Reload for Development
+## 💻 Getting Started
 
-```sh
+```bash
 npm run dev
 ```
 
-### Type-Check, Compile and Minify for Production
+The app will start on http://localhost:5173 by default. Open this in your browser to view the live development version.
 
-```sh
-npm run build
+## 🗂️ Folder Structure
+
+```
+src/
+├─ assets/           # 🖼️ Images, fonts, icons, etc.
+├─ components/       # 🔧 Reusable Vue components
+├─ composables/      # ⚡ Reusable logic hooks
+├─ data/             # 📚 Static mock data (for now!)
+├─ router/           # 🧭 Page routing
+├─ stores/           # 🍍 Pinia stores
+└─ views/            # 🌐 Page-level components
 ```
 
-### Run Unit Tests with [Vitest](https://vitest.dev/)
+## 🛠️ Technologies Used
 
-```sh
-npm run test:unit
-```
+- **Vue 3.5** with Composition API and `<script setup>`
+- **TypeScript** for type safety
+- **Pinia** for state management
+- **Vue Router 4** for SPA routing
+- **TailwindCSS + DaisyUI** for styling
+- **Lucide Vue** for icons
+- **Vite** as the build tool
 
-### Run End-to-End Tests with [Cypress](https://www.cypress.io/)
+## ✨ Features
 
-```sh
-npm run test:e2e:dev
-```
+- 🍽️ **Recipe Browsing** - View all 100% plant-based recipes with images and details
+- 🔍 **Search** - Filter recipes by title dynamically
+- ❤️ **Favorites** - Add and remove recipes to your favorites
+- 🎲 **Random Recipe** - Be suprise and quickly jump to a random recipe
+- 🛒 **Shopping List** - Directly add a recipe's ingredients to a shopping list
+- 📱 **Responsive Layout** - Perfect for mobile/tablet usage while cooking
 
-This runs the end-to-end tests against the Vite development server.
-It is much faster than the production build.
+## ♿ Accessibility
 
-But it's still recommended to test the production build with `test:e2e` before deploying (e.g. in CI environments):
+- Fully semantic HTML and ARIA labels for better screen reader support
+- Keyboard navigation for interactive elements
+- Proper contrast and visual indicators
+- Accessible checkboxes
 
-```sh
-npm run build
-npm run test:e2e
-```
+## 📜 License
 
-### Lint with [ESLint](https://eslint.org/)
+This project is for personal learning purposes. For commercial use, please consult the author.
 
-```sh
-npm run lint
-```
+## 🛟 support
+
+Feedback is always appreciated! If you encounter a problem or have some feedback in general, please do not hesitate to reach out!
