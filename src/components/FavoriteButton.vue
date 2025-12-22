@@ -3,14 +3,15 @@ import { useFavoritesStore } from '@/stores/favoritesStore'
 import { HeartIcon } from 'lucide-vue-next'
 import { computed } from 'vue'
 
-interface FavoriteButtonProps {
-  recipeId: string
-  type?: 'default' | 'secondary'
-}
-
-const props = withDefaults(defineProps<FavoriteButtonProps>(), {
-  type: 'default',
-})
+const props = withDefaults(
+  defineProps<{
+    recipeId: string
+    type?: 'default' | 'secondary'
+  }>(),
+  {
+    type: 'default',
+  },
+)
 
 const favorites = useFavoritesStore()
 

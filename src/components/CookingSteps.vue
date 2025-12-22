@@ -2,11 +2,9 @@
 import { CircleCheckBigIcon, CircleDashedIcon } from 'lucide-vue-next'
 import { ref } from 'vue'
 
-interface CookingStepsProps {
+const props = defineProps<{
   steps: string[]
-}
-
-const props = defineProps<CookingStepsProps>()
+}>()
 
 const checked = ref<Record<string, boolean>>(
   Object.fromEntries(props.steps.map((step) => [step, true])),

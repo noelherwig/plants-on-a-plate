@@ -2,13 +2,14 @@
 import { ref, watch } from 'vue'
 import { SearchIcon } from 'lucide-vue-next'
 
-interface RecipeSearchProps {
-  modelValue: string
-}
-
-const props = withDefaults(defineProps<RecipeSearchProps>(), {
-  modelValue: '',
-})
+const props = withDefaults(
+  defineProps<{
+    modelValue: string
+  }>(),
+  {
+    modelValue: '',
+  },
+)
 
 const emit = defineEmits<{
   (event: 'update:modelValue', value: string): void

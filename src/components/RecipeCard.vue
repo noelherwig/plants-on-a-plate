@@ -3,11 +3,7 @@ import { ClockIcon } from 'lucide-vue-next'
 import FavoriteButton from './FavoriteButton.vue'
 import type { Recipe } from '@/data/recipes'
 
-interface RecipeCardProps {
-  recipe: Recipe
-}
-
-defineProps<RecipeCardProps>()
+defineProps<{ recipe: Recipe }>()
 </script>
 
 <template>

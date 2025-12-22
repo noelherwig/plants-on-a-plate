@@ -1,10 +1,5 @@
 <script setup lang="ts">
-interface SidebarLinkProps {
-  to: string
-  label: string
-}
-
-defineProps<SidebarLinkProps>()
+defineProps<{ to: string; label: string }>()
 </script>
 
 <template>

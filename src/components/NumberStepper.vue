@@ -1,26 +1,25 @@
 <script setup lang="ts">
 import { MinusIcon, PlusIcon } from 'lucide-vue-next'
 
-interface NumberStepperProps {
-  modelValue: number
-  min?: number
-  max?: number
-  step?: number
-}
+const props = withDefaults(
+  defineProps<{
+    modelValue: number
+    min?: number
+    max?: number
+    step?: number
+  }>(),
+  {
+    min: 0,
+    step: 1,
+  },
+)
 
-const props = withDefaults(defineProps<NumberStepperProps>(), {
-  min: 0,
-  step: 1,
-})
-
-const emit = defineEmits<{
-  (event: 'update:modelValue', value: number): void
-}>()
+const emit = defineEmits<{ (event: 'update:modelValue', value: number): void }>()
 
 const decrement = () => {
-  const next = props.modelValue - props.step
-  if (next >= props.min) {
-    emit('update:modelValue', next)
+  const previous = props.modelValue - props.step
+  if (previous >= props.min) {
+    emit('update:modelValue', previous)
   }
 }
 

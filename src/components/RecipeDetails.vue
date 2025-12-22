@@ -3,11 +3,7 @@ import type { Recipe } from '@/data/recipes'
 import RecipeStat from '@/components/RecipeStat.vue'
 import { ClockIcon, FlameIcon, BicepsFlexedIcon, VeganIcon } from 'lucide-vue-next'
 
-interface RecipeDetailsProps {
-  recipe: Recipe
-}
-
-defineProps<RecipeDetailsProps>()
+defineProps<{ recipe: Recipe }>()
 </script>
 
 <template>

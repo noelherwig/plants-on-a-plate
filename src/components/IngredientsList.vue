@@ -2,11 +2,7 @@
 import type { Ingredient } from '@/data/recipes'
 import { ref } from 'vue'
 
-interface IngredientsList {
-  ingredients: Ingredient[]
-}
-
-defineProps<IngredientsList>()
+defineProps<{ ingredients: Ingredient[] }>()
 
 const checked = ref<Record<string, boolean>>({})
 </script>

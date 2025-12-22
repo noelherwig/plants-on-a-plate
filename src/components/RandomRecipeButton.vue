@@ -4,16 +4,17 @@ import { DicesIcon } from 'lucide-vue-next'
 import useRandomRecipe from '@/composable/useRandomRecipe'
 import type { Recipe } from '@/data/recipes'
 
-interface SupriseMeButtonProps {
-  recipes: Recipe[]
-  type?: 'default' | 'secondary'
-  label?: string
-}
-
-const props = withDefaults(defineProps<SupriseMeButtonProps>(), {
-  type: 'default',
-  label: 'Random recipe',
-})
+const props = withDefaults(
+  defineProps<{
+    recipes: Recipe[]
+    type?: 'default' | 'secondary'
+    label?: string
+  }>(),
+  {
+    type: 'default',
+    label: 'Random recipe',
+  },
+)
 
 const router = useRouter()
 

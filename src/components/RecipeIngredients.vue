@@ -6,11 +6,7 @@ import NumberStepper from './NumberStepper.vue'
 import IngredientsList from './IngredientsList.vue'
 import { useShoppingListStore } from '@/stores/shoppingListStore'
 
-interface RecipeIngredientsProps {
-  ingredients: Ingredient[]
-}
-
-const props = defineProps<RecipeIngredientsProps>()
+const props = defineProps<{ ingredients: Ingredient[] }>()
 
 const servings = ref(2)
 const adjustedIngredients = computed(() =>
