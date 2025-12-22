@@ -34,7 +34,7 @@ const addToShoppingList = () => shoppingList.add(adjustedIngredients.value)
 
         <div class="flex items-center gap-2">
           <UsersIcon :size="20" />
-          <NumberStepper v-model="servings" :min="1" :max="10" />
+          <NumberStepper v-model="servings" :min="1" :max="10" label="Servings" />
         </div>
       </div>
 
