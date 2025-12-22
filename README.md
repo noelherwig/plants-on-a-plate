@@ -4,14 +4,14 @@ This is a **Vue 3 + TypeScript** project created to practice building a modern, 
 
 ## 📑 Table of Contents
 
-- [Project Setup](#project-setup)
-- [Getting Started](#getting-started)
-- [Folder Structure](#folder-structure)
-- [Technologies Used](#technologies-used)
-- [Features](#features)
-- [Accessibility](#accessibility)
-- [Contributing](#contributing)
-- [License](#license)
+- [Project Setup](#-project-setup)
+- [Getting Started](#-getting-started)
+- [Folder Structure](#-folder-structure)
+- [Technologies Used](#-technologies-used)
+- [Features](#-features)
+- [Accessibility](#-accessibility)
+- [Contributing](#-contributing)
+- [License](#-license)
 
 ## ⚡ Project Setup
 
