@@ -31,12 +31,14 @@ const toggleFavorite = () => favorites.toggle(props.recipeId)
         'btn-soft': isFavorite && type === 'default',
       }"
       @click="toggleFavorite"
+      :aria-label="isFavorite ? 'Remove from favorites' : 'Add to favorites'"
     >
       <HeartIcon
         :class="{
           'fill-secondary text-secondary': isFavorite,
           'text-secondary': type === 'secondary',
         }"
+        aria-hidden="true"
       />
     </button>
   </div>
