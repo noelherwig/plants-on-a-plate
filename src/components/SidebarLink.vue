@@ -20,7 +20,7 @@ const bgClasses: Record<string, string> = {
       :activeClass="`${bgClasses[props.color]} text-white`"
     >
       <slot />
-      <span class="is-drawer-close:hidden h-5 text-white">{{ label }}</span>
+      <span class="is-drawer-close:hidden h-5 text-nowrap text-white">{{ label }}</span>
     </RouterLink>
   </li>
 </template>
