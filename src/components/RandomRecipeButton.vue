@@ -26,7 +26,7 @@ const goToRandomRecipe = () => {
   const { getRandomRecipe } = useRandomRecipe(props.recipes)
   const randomRecipe = getRandomRecipe()
   if (randomRecipe) {
-    router.push(`/recipe/${randomRecipe.id}`)
+    router.push({ name: 'Recipe', params: { id: randomRecipe.id } })
   }
 }
 </script>
@@ -38,7 +38,7 @@ const goToRandomRecipe = () => {
     :class="type === 'default' ? 'btn-success' : 'btn-secondary'"
     :disabled="!recipes.length"
   >
-    <DicesIcon />
+    <DicesIcon aria-hidden="true" />
     {{ label }}
   </button>
 </template>
