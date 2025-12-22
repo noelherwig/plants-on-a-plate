@@ -13,16 +13,20 @@ const clearShoppingList = () => shoppingList.clear()
 <template>
   <div class="container max-w-300 mx-auto">
     <h1 class="text-xl font-bold mb-4 flex items-center gap-2">
-      <ShoppingBasketIcon class="text-blue-500" />
+      <ShoppingBasketIcon class="text-blue-500" aria-hidden="true" />
       Your shopping list
     </h1>
 
-    <hr class="my-8 h-0.5 border-t-0 bg-neutral-100 dark:bg-white/10" />
+    <hr class="my-8 h-0.5 border-t-0 bg-neutral-100 dark:bg-white/10" role="separator" />
 
     <p class="col-span-full text-center text-base-content/60" v-if="!ingredients.length">
-      Your shopping list is still empty! Take a look at
-      <RouterLink :to="'/'" class="link text-green-500">all recipes</RouterLink> or your
-      <RouterLink :to="'/'" class="link text-pink-500">favorite recipes</RouterLink> .
+      <span>Your shopping list is still empty! Take a look at </span>
+      <RouterLink :to="{ name: 'Home' }" class="link text-green-500">all recipes</RouterLink>
+      <span> or your </span>
+      <RouterLink :to="{ name: 'Favorites' }" class="link text-pink-500">
+        favorite recipes
+      </RouterLink>
+      <span>.</span>
     </p>
 
     <div class="card bg-base-200 shadow-sm" v-else>
@@ -30,7 +34,7 @@ const clearShoppingList = () => shoppingList.clear()
         <IngredientsList :ingredients="ingredients" />
 
         <button class="btn btn-error ms-auto mt-4" @click="clearShoppingList">
-          <TrashIcon /><span>Clear Shopping List</span>
+          <TrashIcon aria-hidden="true" /><span>Clear Shopping List</span>
         </button>
       </div>
     </div>

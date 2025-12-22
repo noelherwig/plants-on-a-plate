@@ -33,9 +33,7 @@ const recipe: ComputedRef<Recipe | undefined> = computed(() =>
     </template>
 
     <template v-else>
-      <p v-if="!recipe" class="col-span-full text-center text-base-content/60">
-        This recipe could not be found.
-      </p>
+      <p class="col-span-full text-center text-base-content/60">This recipe could not be found.</p>
     </template>
   </div>
 </template>
