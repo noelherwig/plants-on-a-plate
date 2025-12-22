@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { PanelRightOpenIcon } from 'lucide-vue-next'
+import { PanelRightOpenIcon, SproutIcon } from 'lucide-vue-next'
 </script>
 
 <template>
@@ -8,6 +8,13 @@ import { PanelRightOpenIcon } from 'lucide-vue-next'
       <PanelRightOpenIcon :size="16" class="rotate-180" />
     </label>
 
-    <div class="font-bold">Plants On A Plate</div>
+    <a
+      class="font-bold flex gap-2"
+      href="https://github.com/noelherwig/plants-on-a-plate"
+      target="_blank"
+    >
+      <SproutIcon :size="24" />
+      Plants On A Plate
+    </a>
   </nav>
 </template>
