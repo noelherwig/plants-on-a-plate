@@ -18,14 +18,14 @@ defineProps<{ recipe: Recipe }>()
         <RecipeStat :icon="BicepsFlexedIcon" :label="`${recipe.statistics.protein}g protein`" />
         <RecipeStat :icon="VeganIcon" label="100% vegan" class="text-green-500" />
       </div>
-      <hr class="my-2 h-0.5 border-t-0 bg-neutral-100 dark:bg-white/10" />
+      <hr class="my-2 h-0.5 border-t-0 bg-neutral-100 dark:bg-white/10" role="separator" />
       <p class="max-w-172 text-pretty whitespace-pre-line">{{ recipe.description }}</p>
     </div>
 
     <figure class="rounded-t-lg rounded-b-none md:rounded-s-none md:rounded-e-lg">
       <img
         :src="`/images/${recipe.imageUrl}`"
-        alt="Recipe"
+        :alt="`Image of ${recipe.title}`"
         class="w-full h-full object-cover md:max-w-120"
       />
     </figure>

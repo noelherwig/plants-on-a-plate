@@ -18,7 +18,7 @@ defineProps<{ recipe: Recipe }>()
       <figure class="overflow-hidden">
         <img
           :src="`/images/${recipe.imageUrl}`"
-          alt="recipe"
+          :alt="`Image of ${recipe.title}`"
           class="max-h-55 w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
         />
       </figure>

@@ -10,16 +10,10 @@ const props = defineProps<{ ingredients: Ingredient[] }>()
 
 const servings = ref(2)
 const adjustedIngredients = computed(() =>
-  props.ingredients.map((ingredient) => {
-    if (ingredient.amount === undefined) {
-      return { ...ingredient, adjustedAmount: undefined }
-    }
-
-    return {
-      ...ingredient,
-      amount: ingredient.amount * servings.value,
-    }
-  }),
+  props.ingredients.map((ingredient) => ({
+    ...ingredient,
+    adjustedAmount: !ingredient.amount ? undefined : ingredient.amount * servings.value,
+  })),
 )
 
 const shoppingList = useShoppingListStore()
@@ -33,15 +27,15 @@ const addToShoppingList = () => shoppingList.add(adjustedIngredients.value)
         <h2 class="card-title lg:text-2xl">Ingredients</h2>
 
         <div class="flex items-center gap-2">
-          <UsersIcon :size="20" />
+          <UsersIcon :size="20" aria-hidden="true" />
           <NumberStepper v-model="servings" :min="1" :max="10" label="Servings" />
         </div>
       </div>
 
       <IngredientsList :ingredients="adjustedIngredients" />
 
-      <button class="btn btn-primary ms-auto mt-4" @click="addToShoppingList">
-        <PlusIcon /><span>Add to Shopping List</span>
+      <button type="button" class="btn btn-primary ms-auto mt-4" @click="addToShoppingList">
+        <PlusIcon aria-hidden="true" /><span>Add to Shopping List</span>
       </button>
     </div>
   </div>

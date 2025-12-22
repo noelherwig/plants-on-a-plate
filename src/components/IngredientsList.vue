@@ -2,7 +2,7 @@
 import type { Ingredient } from '@/data/recipes'
 import { ref } from 'vue'
 
-defineProps<{ ingredients: Ingredient[] }>()
+defineProps<{ ingredients: (Ingredient & { adjustedAmount?: number })[] }>()
 
 const checked = ref<Record<string, boolean>>({})
 </script>
@@ -16,7 +16,7 @@ const checked = ref<Record<string, boolean>>({})
     <input type="checkbox" class="checkbox" v-model="checked[ingredient.type]" />
 
     <span :class="{ 'line-through opacity-60': checked[ingredient.type] }">
-      {{ ingredient.amount }}
+      {{ ingredient.adjustedAmount ?? ingredient.amount }}
       {{ ingredient.unit }}
       {{ ingredient.type }}
     </span>
