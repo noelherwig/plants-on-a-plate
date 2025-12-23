@@ -1,4 +1,4 @@
-# 🌱 Plants On A Plate
+# 🌱 Plants On A Plate (WIP)
 
 This is a **Vue 3 + TypeScript** project created to practice building a modern, responsive, and accessible web application for plant-based recipes. It demonstrates **component-based architecture**, **state management with Pinia**, **composables**, **TailwindCSS + DaisyUI styling**, and other modern frontend best practices.
 
@@ -67,10 +67,20 @@ src/
 - Proper contrast and visual indicators
 - Accessible checkboxes
 
+## Screenshots
+
+![App Screenshot](https://i.imgur.com/gKcq5f6.jpeg)
+
+![App Screenshot](https://i.imgur.com/GGBHsMi.png)
+
+![App Screenshot](https://i.imgur.com/eClSmQy.png)
+
+![App Screenshot](https://i.imgur.com/QWDJHa2.png)
+
 ## 📜 License
 
 This project is for personal learning purposes. For commercial use, please consult the author.
 
-## 🛟 support
+## 🛟 Support
 
 Feedback is always appreciated! If you encounter a problem or have some feedback in general, please do not hesitate to reach out!
