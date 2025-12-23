@@ -1,56 +1,3 @@
-/* Color palette from <https://github.com/vuejs/theme> */
-:root {
-  --vt-c-white: #ffffff;
-  --vt-c-white-soft: #f8f8f8;
-  --vt-c-white-mute: #f2f2f2;
-
-  --vt-c-black: #181818;
-  --vt-c-black-soft: #222222;
-  --vt-c-black-mute: #282828;
-
-  --vt-c-indigo: #2c3e50;
-
-  --vt-c-divider-light-1: rgba(60, 60, 60, 0.29);
-  --vt-c-divider-light-2: rgba(60, 60, 60, 0.12);
-  --vt-c-divider-dark-1: rgba(84, 84, 84, 0.65);
-  --vt-c-divider-dark-2: rgba(84, 84, 84, 0.48);
-
-  --vt-c-text-light-1: var(--vt-c-indigo);
-  --vt-c-text-light-2: rgba(60, 60, 60, 0.66);
-  --vt-c-text-dark-1: var(--vt-c-white);
-  --vt-c-text-dark-2: rgba(235, 235, 235, 0.64);
-}
-
-/* Semantic color variables */
-:root {
-  --color-background: var(--vt-c-white);
-  --color-background-soft: var(--vt-c-white-soft);
-  --color-background-mute: var(--vt-c-white-mute);
-
-  --color-border: var(--vt-c-divider-light-2);
-  --color-border-hover: var(--vt-c-divider-light-1);
-
-  --color-heading: var(--vt-c-text-light-1);
-  --color-text: var(--vt-c-text-light-1);
-
-  --section-gap: 160px;
-}
-
-/* Dark mode semantic color variables */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --color-background: var(--vt-c-black);
-    --color-background-soft: var(--vt-c-black-soft);
-    --color-background-mute: var(--vt-c-black-mute);
-
-    --color-border: var(--vt-c-divider-dark-2);
-    --color-border-hover: var(--vt-c-divider-dark-1);
-
-    --color-heading: var(--vt-c-text-dark-1);
-    --color-text: var(--vt-c-text-dark-2);
-  }
-}
-
 body {
   min-height: 100vh;
   transition:
@@ -76,3 +23,36 @@ body {
 
 @import 'tailwindcss';
 @plugin "daisyui";
+@plugin "daisyui/theme" {
+  default: true;
+  prefersdark: true;
+  color-scheme: 'dark';
+  --color-base-100: oklch(14.076% 0.004 285.822);
+  --color-base-200: oklch(20.219% 0.004 308.229);
+  --color-base-300: oklch(23.219% 0.004 308.229);
+  --color-base-content: oklch(96% 0.003 264.542);
+  --color-primary: oklch(100% 0 0);
+  --color-primary-content: oklch(20% 0 0);
+  --color-secondary: oklch(27.581% 0.064 261.069);
+  --color-secondary-content: oklch(85.516% 0.012 261.069);
+  --color-accent: oklch(36.674% 0.051 338.825);
+  --color-accent-content: oklch(87.334% 0.01 338.825);
+  --color-neutral: oklch(35% 0 0);
+  --color-neutral-content: oklch(100% 0 0);
+  --color-info: oklch(79.061% 0.121 237.133);
+  --color-info-content: oklch(15.812% 0.024 237.133);
+  --color-success: oklch(78.119% 0.192 132.154);
+  --color-success-content: oklch(15.623% 0.038 132.154);
+  --color-warning: oklch(86.127% 0.136 102.891);
+  --color-warning-content: oklch(17.225% 0.027 102.891);
+  --color-error: oklch(71.753% 0.176 22.568);
+  --color-error-content: oklch(14.35% 0.035 22.568);
+  --radius-selector: 0.5rem;
+  --radius-field: 0.25rem;
+  --radius-box: 0.5rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 1;
+  --noise: 0;
+}
