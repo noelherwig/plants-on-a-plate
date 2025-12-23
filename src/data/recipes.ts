@@ -166,7 +166,27 @@ const recipes: Recipe[] = [
     steps: [
       {
         id: '0',
-        text: 'Cook the rice according to the instruction on the package',
+        text: 'Cook the rice according to the instruction on the package, but add the vegetable stock cube(s) to the water before cooking the rice.',
+      },
+      {
+        id: '1',
+        text: 'Finely dice the onion(s) and garlic and slice the leek(s) in halves.',
+      },
+      {
+        id: '2',
+        text: 'Add both the onion(s) and leek(s) in a large pan and stir fry for about 10 minutes',
+      },
+      {
+        id: '3',
+        text: 'Add your vegan minced meat and stir fry for about 5 more minutes',
+      },
+      {
+        id: '4',
+        text: 'Add roughly two table spoons of soy sauce and one table spoon of ketjap manis for each serving and heat it all for a few more minutes',
+      },
+      {
+        id: '5',
+        text: 'Serve on top of the rice. Feel free to add some sambal oelek',
       },
     ],
   },
