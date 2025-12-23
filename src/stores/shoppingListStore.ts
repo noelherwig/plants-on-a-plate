@@ -11,12 +11,20 @@ export const useShoppingListStore = defineStore('shoppingList', () => {
         (item) => item.type === newIngredient.type && item.unit === newIngredient.unit,
       )
 
-      if (existingIngredient) {
-        existingIngredient.amount = (existingIngredient.amount ?? 0) + (newIngredient.amount ?? 0)
+      // If the ingredient does not exist yet, add it to the shopping list as-is
+      if (!existingIngredient) {
+        ingredients.value.push({ ...newIngredient })
         return
       }
 
-      ingredients.value.push({ ...newIngredient })
+      // Existing ingredients without an amount ("Salt", "Olive oil") do not get added again
+      if (!existingIngredient.amount || !newIngredient.amount) {
+        existingIngredient.amount = undefined
+        return
+      }
+
+      // Existing ingredients get their amounts updated
+      existingIngredient.amount += newIngredient.amount
     })
   }
 
