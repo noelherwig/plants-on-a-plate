@@ -36,7 +36,7 @@ const increment = () => {
   <div class="w-24 flex">
     <button
       type="button"
-      class="rounded-r-none btn btn-soft btn-square btn-sm"
+      class="rounded-r-none btn btn-secondary btn-square btn-sm"
       @click="decrement"
       aria-label="Decrease value"
     >
@@ -44,7 +44,7 @@ const increment = () => {
     </button>
 
     <p
-      class="bg-base-300 border-y border-base-100 h-8 flex items-center justify-center flex-1"
+      class="bg-neutral/50 border-base-100 h-8 flex items-center justify-center flex-1"
       tabindex="0"
     >
       <span class="sr-only">{{ label }}: </span><span>{{ modelValue }}</span>
@@ -52,7 +52,7 @@ const increment = () => {
 
     <button
       type="button"
-      class="rounded-l-none btn btn-soft btn-square btn-sm"
+      class="rounded-l-none btn btn-secondary btn-square btn-sm"
       @click="increment"
       aria-label="Increase value"
     >

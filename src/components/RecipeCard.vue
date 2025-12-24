@@ -57,7 +57,7 @@ function handleMouseMove(event: MouseEvent) {
         </div>
       </div>
     </RouterLink>
-    <FavoriteButton :recipe-id="recipe.id" type="secondary" class="absolute top-2 right-2 z-10" />
+    <FavoriteButton :recipe-id="recipe.id" type="soft" class="absolute top-2 right-2 z-10" />
   </div>
 </template>
 

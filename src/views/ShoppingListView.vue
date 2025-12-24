@@ -13,17 +13,17 @@ const clearShoppingList = () => shoppingList.clear()
 <template>
   <div class="container max-w-300 mx-auto">
     <h1 class="text-xl font-bold mb-4 flex items-center gap-2">
-      <ShoppingBasketIcon class="text-blue-500" aria-hidden="true" />
+      <ShoppingBasketIcon class="text-(--color-blue)" aria-hidden="true" />
       Your shopping list
     </h1>
 
-    <hr class="my-8 h-0.5 border-t-0 bg-neutral-100 dark:bg-white/10" role="separator" />
+    <hr class="my-8 h-0.5 border-t-0 bg-neutral" role="separator" />
 
     <p class="col-span-full text-center text-base-content/60" v-if="!ingredients.length">
       <span>Your shopping list is still empty! Take a look at </span>
-      <RouterLink :to="{ name: 'Home' }" class="link text-green-500">all recipes</RouterLink>
+      <RouterLink :to="{ name: 'Home' }" class="link text-(--color-green)">all recipes</RouterLink>
       <span> or your </span>
-      <RouterLink :to="{ name: 'Favorites' }" class="link text-pink-500">
+      <RouterLink :to="{ name: 'Favorites' }" class="link text-(--color-pink)">
         favorite recipes
       </RouterLink>
       <span>.</span>

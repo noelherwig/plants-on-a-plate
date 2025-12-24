@@ -23,7 +23,7 @@ const emit = defineEmits<{
 
 <template>
   <label class="input w-full sm:w-auto grow sm:input-lg mb-4 sm:mb-0" for="recipe-search">
-    <SearchIcon class="opacity-50" aria-hidden="true" />
+    <SearchIcon class="opacity-60" aria-hidden="true" />
     <input type="search" placeholder="Search" v-model="searchTerm" id="recipe-search" />
   </label>
 </template>

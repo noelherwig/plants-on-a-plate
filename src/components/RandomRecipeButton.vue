@@ -7,7 +7,7 @@ import type { Recipe } from '@/data/recipes'
 const props = withDefaults(
   defineProps<{
     recipes: Recipe[]
-    type?: 'default' | 'secondary'
+    type?: 'default' | 'favorite'
     label?: string
   }>(),
   {
@@ -33,12 +33,15 @@ const goToRandomRecipe = () => {
 
 <template>
   <button
-    class="btn sm:btn-lg btn-soft gap-4"
+    class="btn btn-primary sm:btn-lg gap-2 ps-4"
     @click="goToRandomRecipe"
-    :class="type === 'default' ? 'btn-success' : 'btn-secondary'"
     :disabled="!recipes.length"
+    :class="{ 'text-(--color-pink-content)': type === 'favorite' && recipes.length }"
   >
-    <DicesIcon aria-hidden="true" />
+    <DicesIcon
+      aria-hidden="true"
+      :class="{ 'text-(--color-pink)': type === 'favorite' && recipes.length }"
+    />
     {{ label }}
   </button>
 </template>

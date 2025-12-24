@@ -15,7 +15,7 @@ const { searchResults } = useSearch(searchTerm, allRecipes)
 <template>
   <div class="container max-w-300 mx-auto">
     <h1 class="text-xl font-bold mb-4 flex items-center gap-2">
-      <LeafIcon class="text-green-500" aria-hidden="true" />
+      <LeafIcon class="text-(--color-green)" aria-hidden="true" />
       All plant-based recipes
     </h1>
 
@@ -27,7 +27,7 @@ const { searchResults } = useSearch(searchTerm, allRecipes)
       </div>
     </div>
 
-    <hr class="my-8 h-0.5 border-t-0 bg-neutral-100 dark:bg-white/10" role="separator" />
+    <hr class="my-8 h-0.5 border-t-0 bg-neutral" role="separator" />
 
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
       <RecipeCard v-for="recipe in searchResults" :key="recipe.id" :recipe="recipe" />

@@ -6,7 +6,7 @@ defineProps<{ icon: FunctionalComponent; label: string }>()
 
 <template>
   <div class="flex items-center">
-    <div class="h-8 w-8 bg-base-300 shadow-sm flex justify-center items-center me-3 rounded">
+    <div class="h-8 w-8 bg-neutral/50 shadow-sm flex justify-center items-center me-3 rounded">
       <component :is="icon" :size="16" aria-hidden="true" />
     </div>
     <span class="truncate">{{ label }}</span>

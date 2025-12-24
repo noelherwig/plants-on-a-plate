@@ -6,7 +6,7 @@ import { computed } from 'vue'
 const props = withDefaults(
   defineProps<{
     recipeId: string
-    type?: 'default' | 'secondary'
+    type?: 'default' | 'soft'
   }>(),
   {
     type: 'default',
@@ -26,18 +26,12 @@ const toggleFavorite = () => favorites.toggle(props.recipeId)
   >
     <button
       class="btn btn-square btn-ghost"
-      :class="{
-        'not-[&:hover]:btn-secondary': isFavorite,
-        'btn-soft': isFavorite && type === 'default',
-      }"
+      :class="{ 'btn-soft': type === 'soft' }"
       @click="toggleFavorite"
       :aria-label="isFavorite ? 'Remove from favorites' : 'Add to favorites'"
     >
       <HeartIcon
-        :class="{
-          'fill-secondary text-secondary': isFavorite,
-          'text-secondary': type === 'secondary',
-        }"
+        :class="{ 'fill-(--color-pink) text-(--color-pink)': isFavorite }"
         aria-hidden="true"
       />
     </button>

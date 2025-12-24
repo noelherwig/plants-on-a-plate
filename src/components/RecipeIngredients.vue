@@ -40,7 +40,7 @@ const addToShoppingList = () => shoppingList.add(adjustedIngredients.value)
 
       <IngredientsList :ingredients="adjustedIngredients" />
 
-      <button type="button" class="btn btn-primary ms-auto mt-4" @click="addToShoppingList">
+      <button type="button" class="btn btn-primary ms-auto gap-2 ps-3" @click="addToShoppingList">
         <PlusIcon aria-hidden="true" /><span>Add to Shopping List</span>
       </button>
     </div>

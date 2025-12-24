@@ -20,7 +20,7 @@ const { searchResults } = useSearch(searchTerm, favoriteRecipes)
 <template>
   <div class="container max-w-300 mx-auto">
     <h1 class="text-xl font-bold mb-4 flex items-center gap-2">
-      <HeartIcon class="text-pink-500" aria-hidden="true" />
+      <HeartIcon class="text-(--color-pink)" aria-hidden="true" />
       Your favorite recipes
     </h1>
 
@@ -28,11 +28,11 @@ const { searchResults } = useSearch(searchTerm, favoriteRecipes)
       <RecipeSearch v-model="searchTerm" />
       <div class="flex items-center">
         <p class="mx-4" aria-hidden="true">or</p>
-        <RandomRecipeButton :recipes="favoriteRecipes" type="secondary" label="Random favorite" />
+        <RandomRecipeButton :recipes="favoriteRecipes" type="favorite" label="Random favorite" />
       </div>
     </div>
 
-    <hr class="my-8 h-0.5 border-t-0 bg-neutral-100 dark:bg-white/10" role="separator" />
+    <hr class="my-8 h-0.5 border-t-0 bg-neutral" role="separator" />
 
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
       <RecipeCard v-for="recipe in searchResults" :key="recipe.id" :recipe="recipe" />
@@ -47,7 +47,7 @@ const { searchResults } = useSearch(searchTerm, favoriteRecipes)
 
     <p v-if="!favoriteRecipes.length" class="col-span-full text-center text-base-content/60">
       You haven't added any favorite recipes yet! Take a look at
-      <RouterLink :to="'/'" class="link text-green-500">all recipes</RouterLink>.
+      <RouterLink :to="'/'" class="link text-(--color-green)">all recipes</RouterLink>.
     </p>
   </div>
 </template>

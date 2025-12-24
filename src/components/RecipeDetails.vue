@@ -16,9 +16,9 @@ defineProps<{ recipe: Recipe }>()
         <RecipeStat :icon="ClockIcon" :label="`${recipe.minutes} minutes`" />
         <RecipeStat :icon="FlameIcon" :label="`${recipe.statistics.calories} calories`" />
         <RecipeStat :icon="BicepsFlexedIcon" :label="`${recipe.statistics.protein}g protein`" />
-        <RecipeStat :icon="VeganIcon" label="100% vegan" class="text-green-500" />
+        <RecipeStat :icon="VeganIcon" label="100% vegan" class="text-(--color-green)" />
       </div>
-      <hr class="my-2 h-0.5 border-t-0 bg-neutral-100 dark:bg-white/10" role="separator" />
+      <hr class="my-2 h-0.5 border-t-0 bg-neutral" role="separator" />
       <p class="max-w-172 text-pretty whitespace-pre-line">{{ recipe.description }}</p>
     </div>
 
