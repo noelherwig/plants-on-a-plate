@@ -1,9 +1,11 @@
 import { type Ingredient } from '@/data/recipes'
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
+import { ToastType, useToastStore } from './toastStore'
 
 export const useShoppingListStore = defineStore('shoppingList', () => {
   const ingredients = ref<Ingredient[]>([])
+  const toastStore = useToastStore()
 
   const add = (newIngredients: Ingredient[]) => {
     newIngredients.forEach((newIngredient) => {
@@ -26,6 +28,8 @@ export const useShoppingListStore = defineStore('shoppingList', () => {
       // Existing ingredients get their amounts updated
       existingIngredient.amount += newIngredient.amount
     })
+
+    toastStore.show('The ingredients have been added to your shopping list!', ToastType.Success)
   }
 
   const clear = () => (ingredients.value = [])

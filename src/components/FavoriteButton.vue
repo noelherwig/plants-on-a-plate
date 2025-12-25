@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useFavoritesStore } from '@/stores/favoritesStore'
+import { useFavoriteStore } from '@/stores/favoriteStore'
 import { HeartIcon } from 'lucide-vue-next'
 import { computed, ref, useAttrs } from 'vue'
 import AppModal from './AppModal.vue'
@@ -16,9 +16,9 @@ const props = withDefaults(
   },
 )
 
-const favorites = useFavoritesStore()
+const favoriteStore = useFavoriteStore()
 
-const isFavorite = computed(() => favorites.isFavorite(props.recipeId))
+const isFavorite = computed(() => favoriteStore.isFavorite(props.recipeId))
 const hasSpinned = ref(false)
 const modalRef = ref<InstanceType<typeof AppModal>>()
 
@@ -28,12 +28,12 @@ const addFavorite = () => {
   // Ensures that the spin animation only runs on click, not on initial render
   requestAnimationFrame(() => {
     hasSpinned.value = true
-    favorites.add(props.recipeId)
+    favoriteStore.add(props.recipeId)
   })
 }
 
 const removeFavorite = () => {
-  favorites.remove(props.recipeId)
+  favoriteStore.remove(props.recipeId)
   closeDialog()
 }
 

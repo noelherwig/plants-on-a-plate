@@ -22,8 +22,8 @@ const adjustedIngredients = computed(() =>
   }),
 )
 
-const shoppingList = useShoppingListStore()
-const addToShoppingList = () => shoppingList.add(adjustedIngredients.value)
+const shoppingListStore = useShoppingListStore()
+const addToShoppingList = () => shoppingListStore.add(adjustedIngredients.value)
 </script>
 
 <template>

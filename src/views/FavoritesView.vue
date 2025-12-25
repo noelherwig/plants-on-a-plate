@@ -4,13 +4,13 @@ import RecipeSearch from '@/components/RecipeSearch.vue'
 import RandomRecipeButton from '@/components/RandomRecipeButton.vue'
 import useSearch from '@/composable/useSearch'
 import recipes from '@/data/recipes'
-import { useFavoritesStore } from '@/stores/favoritesStore'
+import { useFavoriteStore } from '@/stores/favoriteStore'
 import { HeartIcon } from 'lucide-vue-next'
 import { computed, ref } from 'vue'
 
-const favorites = useFavoritesStore()
+const favoriteStore = useFavoriteStore()
 const favoriteRecipes = computed(() =>
-  recipes.filter((recipe) => favorites.favoriteRecipeIds.includes(recipe.id)),
+  recipes.filter((recipe) => favoriteStore.favoriteRecipeIds.includes(recipe.id)),
 )
 
 const searchTerm = ref('')

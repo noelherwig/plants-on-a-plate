@@ -4,10 +4,10 @@ import { useShoppingListStore } from '@/stores/shoppingListStore'
 import { ShoppingBasketIcon, TrashIcon } from 'lucide-vue-next'
 import { storeToRefs } from 'pinia'
 
-const shoppingList = useShoppingListStore()
-const { ingredients } = storeToRefs(shoppingList)
+const shoppingListStore = useShoppingListStore()
+const { ingredients } = storeToRefs(shoppingListStore)
 
-const clearShoppingList = () => shoppingList.clear()
+const clearShoppingList = () => shoppingListStore.clear()
 </script>
 
 <template>

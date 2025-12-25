@@ -4,7 +4,7 @@ import { ref } from 'vue'
 
 defineProps<{ title: string; message: string }>()
 
-const dialog = ref<HTMLDialogElement | null>(null)
+const dialog = ref<HTMLDialogElement>()
 
 const open = () => dialog.value && !dialog.value.open && dialog.value.showModal()
 const close = () => dialog.value && dialog.value.close()

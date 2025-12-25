@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import AppNavbar from './AppNavbar.vue'
 import AppSidebar from './AppSidebar.vue'
+import AppToast from './AppToast.vue'
 </script>
 
 <template>
@@ -18,6 +19,7 @@ import AppSidebar from './AppSidebar.vue'
       </header>
 
       <main class="flex-1 min-h-0 overflow-y-scroll mt-16 p-4">
+        <AppToast />
         <slot />
       </main>
     </div>

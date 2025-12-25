@@ -61,7 +61,7 @@ const handleMouseMove = (event: MouseEvent) => {
       :recipe-id="recipe.id"
       :recipe-title="recipe.title"
       type="soft"
-      class="absolute top-2 right-2 z-10"
+      class="absolute top-2 right-2 z-9"
     />
   </div>
 </template>
