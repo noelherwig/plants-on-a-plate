@@ -6,13 +6,12 @@ export const useFavoritesStore = defineStore('favorites', () => {
 
   const isFavorite = (id: string) => favoriteRecipeIds.value.includes(id)
 
-  const toggle = (id: string) => {
-    if (isFavorite(id)) {
-      favoriteRecipeIds.value = favoriteRecipeIds.value.filter((favoriteId) => favoriteId !== id)
-    } else {
-      favoriteRecipeIds.value.push(id)
-    }
-  }
+  const add = (id: string) => favoriteRecipeIds.value.push(id)
 
-  return { favoriteRecipeIds, isFavorite, toggle }
+  const remove = (id: string) =>
+    (favoriteRecipeIds.value = favoriteRecipeIds.value.filter((favoriteId) => favoriteId !== id))
+
+  const toggle = (id: string) => (isFavorite(id) ? remove(id) : add(id))
+
+  return { favoriteRecipeIds, isFavorite, remove, add, toggle }
 })

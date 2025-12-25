@@ -6,11 +6,11 @@ import NumberStepper from './NumberStepper.vue'
 import IngredientsList from './IngredientsList.vue'
 import { useShoppingListStore } from '@/stores/shoppingListStore'
 
-const props = defineProps<{ ingredients: Ingredient[] }>()
+const { ingredients } = defineProps<{ ingredients: Ingredient[] }>()
 
 const servings = ref(2)
 const adjustedIngredients = computed(() =>
-  props.ingredients.map((ingredient) => {
+  ingredients.map((ingredient) => {
     if (ingredient.amount === undefined) {
       return { ...ingredient, adjustedAmount: undefined }
     }

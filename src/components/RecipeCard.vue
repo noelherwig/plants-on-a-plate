@@ -5,7 +5,7 @@ import type { Recipe } from '@/data/recipes'
 
 defineProps<{ recipe: Recipe }>()
 
-function handleMouseMove(event: MouseEvent) {
+const handleMouseMove = (event: MouseEvent) => {
   const card = event.currentTarget
   if (!(card instanceof HTMLElement)) {
     return
@@ -57,7 +57,12 @@ function handleMouseMove(event: MouseEvent) {
         </div>
       </div>
     </RouterLink>
-    <FavoriteButton :recipe-id="recipe.id" type="soft" class="absolute top-2 right-2 z-10" />
+    <FavoriteButton
+      :recipe-id="recipe.id"
+      :recipe-title="recipe.title"
+      type="soft"
+      class="absolute top-2 right-2 z-10"
+    />
   </div>
 </template>
 

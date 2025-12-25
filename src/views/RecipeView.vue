@@ -20,7 +20,7 @@ const recipe: ComputedRef<Recipe | undefined> = computed(() =>
   <div class="container max-w-300 mx-auto">
     <div class="flex justify-between mb-4">
       <BackButton />
-      <FavoriteButton v-if="recipe" :recipe-id="recipe.id" />
+      <FavoriteButton v-if="recipe" :recipe-id="recipe.id" :recipe-title="recipe.title" />
     </div>
 
     <template v-if="recipe">
