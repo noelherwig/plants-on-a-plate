@@ -3,14 +3,14 @@ import type { CookingStep } from '@/data/recipes'
 import { CircleCheckBigIcon, CircleDashedIcon } from 'lucide-vue-next'
 import { ref } from 'vue'
 
-const { steps } = defineProps<{
+const props = defineProps<{
   steps: CookingStep[]
 }>()
 
 // DaisyUI's Collapse Element is open for "true" and closed for "false"
 // Hence, "uncompletedSteps" is used to track the completed steps
 const uncompletedSteps = ref<Record<string, boolean>>(
-  Object.fromEntries(steps.map((step) => [step.id, true])),
+  Object.fromEntries(props.steps.map((step) => [step.id, true])),
 )
 </script>
 
