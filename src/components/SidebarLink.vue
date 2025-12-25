@@ -1,5 +1,12 @@
 <script setup lang="ts">
-defineProps<{ to: string; label: string; color: 'green' | 'pink' | 'blue' }>()
+const props = defineProps<{ to: string; label: string; color: 'green' | 'pink' | 'blue' }>()
+
+// Static class maps for Tailwind compatibility
+const bgClasses: Record<string, string> = {
+  green: 'bg-(--color-green) text-(--color-green-content)',
+  pink: 'bg-(--color-pink)  text-(--color-pink-content)',
+  blue: 'bg-(--color-blue)  text-(--color-blue-content)',
+}
 </script>
 
 <template>
@@ -10,7 +17,7 @@ defineProps<{ to: string; label: string; color: 'green' | 'pink' | 'blue' }>()
       class="is-drawer-close:tooltip is-drawer-close:tooltip-right py-3 group"
       :data-tip="label"
       :class="`text-(--color-${color})`"
-      :activeClass="`bg-(--color-${color}) text-(--color-${color}-content)`"
+      :activeClass="`${bgClasses[props.color]}`"
     >
       <slot />
       <span
