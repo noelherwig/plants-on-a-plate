@@ -2,7 +2,7 @@
 import { useFavoriteStore } from '@/stores/favoriteStore'
 import { HeartIcon } from 'lucide-vue-next'
 import { computed, ref, useAttrs } from 'vue'
-import AppModal from './AppModal.vue'
+import { useConfirmDialog } from '@/composable/useConfirmDialog'
 
 const attrs = useAttrs()
 const props = withDefaults(
@@ -30,11 +30,17 @@ const addFavorite = () => {
   })
 }
 
-const removeFavorite = () => favoriteStore.remove(props.recipeId)
+const { confirmDialog } = useConfirmDialog()
+const confirmRemoveFavorite = async () => {
+  const confirmed = await confirmDialog({
+    title: 'Remove favorite',
+    message: `Are you sure you want to remove “${props.recipeTitle}” from your favorites?`,
+  })
 
-const modalRef = ref<InstanceType<typeof AppModal>>()
-const openDialog = () => modalRef.value && modalRef.value.open()
-const closeDialog = () => modalRef.value && modalRef.value.close()
+  if (confirmed) {
+    favoriteStore.remove(props.recipeId)
+  }
+}
 </script>
 
 <template>
@@ -46,7 +52,7 @@ const closeDialog = () => modalRef.value && modalRef.value.close()
     <button
       class="btn btn-square btn-ghost"
       :class="{ 'btn-soft': type === 'soft' }"
-      @click="isFavorite ? openDialog() : addFavorite()"
+      @click="isFavorite ? confirmRemoveFavorite() : addFavorite()"
       :aria-label="isFavorite ? 'Remove from favorites' : 'Add to favorites'"
     >
       <HeartIcon
@@ -58,13 +64,4 @@ const closeDialog = () => modalRef.value && modalRef.value.close()
       />
     </button>
   </div>
-
-  <AppModal
-    ref="modalRef"
-    title="Remove favorite"
-    :message="`Are you sure you want to remove “${recipeTitle}” from your favorites?`"
-  >
-    <button class="btn btn-secondary" @click="closeDialog()">Cancel</button>
-    <button class="btn btn-primary" @click="(removeFavorite(), closeDialog())">Confirm</button>
-  </AppModal>
 </template>

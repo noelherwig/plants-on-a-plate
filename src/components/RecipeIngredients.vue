@@ -5,7 +5,7 @@ import { computed, ref } from 'vue'
 import NumberStepper from './NumberStepper.vue'
 import IngredientsList from './IngredientsList.vue'
 import { useShoppingListStore } from '@/stores/shoppingListStore'
-import AppModal from './AppModal.vue'
+import { useConfirmDialog } from '@/composable/useConfirmDialog'
 
 const props = defineProps<{ recipe: Recipe }>()
 
@@ -25,25 +25,23 @@ const adjustedIngredients = computed(() =>
 
 const shoppingListStore = useShoppingListStore()
 const ingredientsAdded = ref(false)
-const isAlreadyOnShoppingList = computed(() => shoppingListStore.recipes.includes(props.recipe))
+const alreadyAdded = computed(() => shoppingListStore.recipes.includes(props.recipe))
 
-const modalRef = ref<InstanceType<typeof AppModal>>()
-const openDialog = () => modalRef.value && modalRef.value.open()
-const closeDialog = () => modalRef.value && modalRef.value.close()
+const { confirmDialog } = useConfirmDialog()
+const addToShoppingList = async () => {
+  // Ask for confirmation only if the recipe is already in the shopping list
+  const shouldAdd =
+    !alreadyAdded.value ||
+    (await confirmDialog({
+      title: 'Recipe added previously',
+      message:
+        'You have already added this recipe to your shopping list previously. Are you sure you want to add these ingredients again?',
+    }))
 
-const addToShoppingList = () => {
-  shoppingListStore.add(props.recipe, adjustedIngredients.value)
-  ingredientsAdded.value = true
-  closeDialog()
-}
-
-const confirmAddToShoppingList = () => {
-  if (isAlreadyOnShoppingList.value) {
-    openDialog()
-    return
+  if (shouldAdd) {
+    shoppingListStore.add(props.recipe, adjustedIngredients.value)
+    ingredientsAdded.value = true
   }
-
-  addToShoppingList()
 }
 </script>
 
@@ -64,7 +62,7 @@ const confirmAddToShoppingList = () => {
       <button
         type="button"
         class="btn btn-primary ms-auto gap-2 ps-3"
-        @click="confirmAddToShoppingList()"
+        @click="addToShoppingList()"
         :disabled="ingredientsAdded"
       >
         <PlusIcon aria-hidden="true" /><span>Add to Shopping List</span>
@@ -78,13 +76,4 @@ const confirmAddToShoppingList = () => {
       </span>
     </div>
   </div>
-
-  <AppModal
-    ref="modalRef"
-    title="Recipe added previously"
-    :message="`You have already added this recipe to your shopping list previously. Are you sure you want to add these ingredients again?`"
-  >
-    <button class="btn btn-secondary" @click="closeDialog()">Cancel</button>
-    <button class="btn btn-primary" @click="addToShoppingList()">Confirm</button>
-  </AppModal>
 </template>
