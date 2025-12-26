@@ -27,7 +27,7 @@ const recipe: ComputedRef<Recipe | undefined> = computed(() =>
       <RecipeDetails :recipe="recipe" />
 
       <div class="grid lg:grid-cols-3 gap-4">
-        <RecipeIngredients :ingredients="recipe.ingredients" />
+        <RecipeIngredients :recipe="recipe" />
         <CookingSteps :steps="recipe.steps" class="lg:col-span-2" />
       </div>
     </template>

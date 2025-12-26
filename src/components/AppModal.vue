@@ -29,7 +29,7 @@ defineExpose({ open, close })
 
       <div class="modal-action bg-base-200 px-6 py-3">
         <slot>
-          <button class="btn btn-secondary" @click="close">Close</button>
+          <button class="btn btn-secondary" @click="close()">Close</button>
         </slot>
       </div>
     </div>

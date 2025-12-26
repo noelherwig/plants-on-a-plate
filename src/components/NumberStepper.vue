@@ -37,7 +37,7 @@ const increment = () => {
     <button
       type="button"
       class="rounded-r-none btn btn-secondary btn-square btn-sm"
-      @click="decrement"
+      @click="decrement()"
       aria-label="Decrease value"
     >
       <MinusIcon :size="16" aria-hidden="true" />
@@ -53,7 +53,7 @@ const increment = () => {
     <button
       type="button"
       class="rounded-l-none btn btn-secondary btn-square btn-sm"
-      @click="increment"
+      @click="increment()"
       aria-label="Increase value"
     >
       <PlusIcon :size="16" aria-hidden="true" />

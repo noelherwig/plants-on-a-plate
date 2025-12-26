@@ -34,7 +34,7 @@ const goToRandomRecipe = () => {
 <template>
   <button
     class="btn btn-primary sm:btn-lg gap-2 ps-4"
-    @click="goToRandomRecipe"
+    @click="goToRandomRecipe()"
     :disabled="!recipes.length"
     :class="{ 'text-(--color-pink-content)': type === 'favorite' && recipes.length }"
   >

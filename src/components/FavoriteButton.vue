@@ -17,10 +17,8 @@ const props = withDefaults(
 )
 
 const favoriteStore = useFavoriteStore()
-
 const isFavorite = computed(() => favoriteStore.isFavorite(props.recipeId))
 const hasSpinned = ref(false)
-const modalRef = ref<InstanceType<typeof AppModal>>()
 
 const addFavorite = () => {
   hasSpinned.value = false
@@ -32,11 +30,9 @@ const addFavorite = () => {
   })
 }
 
-const removeFavorite = () => {
-  favoriteStore.remove(props.recipeId)
-  closeDialog()
-}
+const removeFavorite = () => favoriteStore.remove(props.recipeId)
 
+const modalRef = ref<InstanceType<typeof AppModal>>()
 const openDialog = () => modalRef.value && modalRef.value.open()
 const closeDialog = () => modalRef.value && modalRef.value.close()
 </script>
@@ -66,9 +62,9 @@ const closeDialog = () => modalRef.value && modalRef.value.close()
   <AppModal
     ref="modalRef"
     title="Remove favorite"
-    :message="`Are you sure you want to remove &quot;${recipeTitle}&quot; from your favorites?`"
+    :message="`Are you sure you want to remove “${recipeTitle}” from your favorites?`"
   >
     <button class="btn btn-secondary" @click="closeDialog()">Cancel</button>
-    <button class="btn btn-primary" @click="removeFavorite()">Confirm</button>
+    <button class="btn btn-primary" @click="(removeFavorite(), closeDialog())">Confirm</button>
   </AppModal>
 </template>
