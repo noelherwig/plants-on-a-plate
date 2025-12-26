@@ -9,7 +9,7 @@ const shoppingListStore = useShoppingListStore()
 const { ingredients } = storeToRefs(shoppingListStore)
 
 const { confirmDialog } = useConfirmDialog()
-const confirmClearShoppingList = async () => {
+const clearShoppingList = async () => {
   const confirmed = await confirmDialog({
     title: 'Clear shopping list',
     message: `Are you sure you want to clear your shopping list? This action cannot be undone.`,
@@ -44,7 +44,7 @@ const confirmClearShoppingList = async () => {
       <div class="card-body p-4 gap-y-2">
         <IngredientsList :ingredients="ingredients" />
 
-        <button class="btn btn-error ms-auto mt-4" @click="confirmClearShoppingList()">
+        <button class="btn btn-error ms-auto mt-4" @click="clearShoppingList()">
           <TrashIcon aria-hidden="true" /><span>Clear Shopping List</span>
         </button>
       </div>

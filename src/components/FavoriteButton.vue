@@ -31,7 +31,7 @@ const addFavorite = () => {
 }
 
 const { confirmDialog } = useConfirmDialog()
-const confirmRemoveFavorite = async () => {
+const removeFavorite = async () => {
   const confirmed = await confirmDialog({
     title: 'Remove favorite',
     message: `Are you sure you want to remove “${props.recipeTitle}” from your favorites?`,
@@ -52,7 +52,7 @@ const confirmRemoveFavorite = async () => {
     <button
       class="btn btn-square btn-ghost"
       :class="{ 'btn-soft': type === 'soft' }"
-      @click="isFavorite ? confirmRemoveFavorite() : addFavorite()"
+      @click="isFavorite ? removeFavorite() : addFavorite()"
       :aria-label="isFavorite ? 'Remove from favorites' : 'Add to favorites'"
     >
       <HeartIcon
