@@ -1,5 +1,12 @@
 <script setup lang="ts">
-defineProps<{ to: string; label: string; color: 'green' | 'pink' | 'blue' }>()
+import type { FunctionalComponent } from 'vue'
+
+defineProps<{
+  to: string
+  label: string
+  color: 'green' | 'pink' | 'blue'
+  icon: FunctionalComponent
+}>()
 
 // Static class maps for Tailwind compatibility
 const styleMap = {
@@ -19,7 +26,7 @@ const styleMap = {
       :class="`text-(--color-${color})`"
       :activeClass="`${styleMap[color]}`"
     >
-      <slot />
+      <component :is="icon" :size="20" aria-hidden="true" />
       <span
         class="is-drawer-close:hidden h-5 text-nowrap text-white font-medium group-[.router-link-exact-active]:text-inherit"
       >

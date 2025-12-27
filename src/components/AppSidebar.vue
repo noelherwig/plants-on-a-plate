@@ -12,17 +12,16 @@ import SidebarLink from './SidebarLink.vue'
     >
       <nav class="w-full" aria-label="Sidebar navigation">
         <ul class="menu w-full grow">
-          <SidebarLink to="/" label="Home" color="green">
-            <LeafIcon :size="20" aria-hidden="true" />
-          </SidebarLink>
+          <SidebarLink to="/" label="Home" color="green" :icon="LeafIcon" />
 
-          <SidebarLink to="/favorites" label="Favorites" color="pink">
-            <HeartIcon :size="20" aria-hidden="true" />
-          </SidebarLink>
+          <SidebarLink to="/favorites" label="Favorites" color="pink" :icon="HeartIcon" />
 
-          <SidebarLink to="/shopping-list" label="Shopping List" color="blue">
-            <ShoppingBasketIcon :size="20" aria-hidden="true" />
-          </SidebarLink>
+          <SidebarLink
+            to="/shopping-list"
+            label="Shopping List"
+            color="blue"
+            :icon="ShoppingBasketIcon"
+          />
         </ul>
       </nav>
     </aside>
