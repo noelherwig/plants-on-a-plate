@@ -19,7 +19,7 @@ defineExpose({ open, close })
         <div
           class="mx-auto sm:mx-0 flex size-10 shrink-0 items-center justify-center rounded-full bg-warning/10"
         >
-          <TriangleAlertIcon class="text-warning" />
+          <TriangleAlertIcon class="text-warning" aria-hidden="true" />
         </div>
         <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
           <h3 class="text-lg font-bold mb-3">{{ title }}</h3>

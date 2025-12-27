@@ -71,7 +71,7 @@ const addToShoppingList = async () => {
         class="flex items-center justify-end text-(--color-green) gap-1"
         v-if="ingredientsAdded"
       >
-        <CircleCheckIcon :size="16" />
+        <CircleCheckIcon :size="16" aria-hidden="true" />
         Ingredients added!
       </span>
     </div>

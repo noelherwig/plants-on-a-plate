@@ -1,9 +1,11 @@
 <script setup lang="ts">
-import { ClockIcon } from 'lucide-vue-next'
+import { ClockIcon, ShoppingBasketIcon } from 'lucide-vue-next'
 import FavoriteButton from './FavoriteButton.vue'
 import type { Recipe } from '@/data/recipes'
+import { useShoppingListStore } from '@/stores/shoppingListStore'
+import AppBadge from './AppBadge.vue'
 
-defineProps<{ recipe: Recipe }>()
+const props = defineProps<{ recipe: Recipe }>()
 
 const handleMouseMove = (event: MouseEvent) => {
   const card = event.currentTarget
@@ -18,6 +20,9 @@ const handleMouseMove = (event: MouseEvent) => {
   card.style.setProperty('--mouse-x', `${x}px`)
   card.style.setProperty('--mouse-y', `${y}px`)
 }
+
+const shoppingListStore = useShoppingListStore()
+const onShoppingList = shoppingListStore.hasRecipe(props.recipe)
 </script>
 
 <template>
@@ -45,7 +50,7 @@ const handleMouseMove = (event: MouseEvent) => {
           </h3>
 
           <div class="flex items-center text-base-content/60 font-semibold">
-            <ClockIcon :size="16" class="me-2" />
+            <ClockIcon :size="16" class="me-2" aria-hidden="true" />
             <span>{{ recipe.minutes }} min</span>
 
             <span v-if="recipe.categories.length" class="mx-2"> • </span>
@@ -57,6 +62,14 @@ const handleMouseMove = (event: MouseEvent) => {
         </div>
       </div>
     </RouterLink>
+
+    <AppBadge
+      v-if="onShoppingList"
+      :icon="ShoppingBasketIcon"
+      label="Added"
+      class="absolute top-2 left-2 z-9"
+    />
+
     <FavoriteButton
       :recipe-id="recipe.id"
       :recipe-title="recipe.title"

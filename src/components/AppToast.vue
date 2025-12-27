@@ -32,7 +32,7 @@ const styleMap = {
     >
       <div class="p-4">
         <div class="flex items-start">
-          <component :is="styleMap[toast.type].icon" class="w-6 h-6 mr-3" />
+          <component :is="styleMap[toast.type].icon" class="w-6 h-6 mr-3" aria-hidden="true" />
           <div class="ml-3 flex-1">
             <p class="font-medium">{{ toast.message }}</p>
           </div>

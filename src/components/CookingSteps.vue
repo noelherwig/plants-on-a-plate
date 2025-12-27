@@ -29,13 +29,13 @@ const uncompletedSteps = ref<Record<string, boolean>>(
 
         <!-- Step uncompleted icon -->
         <CircleDashedIcon
+          v-if="uncompletedSteps[step.id]"
           :size="20"
           class="text-base-content/60"
           aria-hidden="true"
-          v-if="uncompletedSteps[step.id]"
         />
         <!-- Step completed icon -->
-        <CircleCheckBigIcon :size="20" class="text-(--color-green)" aria-hidden="true" v-else />
+        <CircleCheckBigIcon v-else :size="20" class="text-(--color-green)" aria-hidden="true" />
       </label>
 
       <div class="collapse-content text-sm text-pretty">
