@@ -4,8 +4,17 @@ import FavoriteButton from './FavoriteButton.vue'
 import type { Recipe } from '@/data/recipes'
 import { useShoppingListStore } from '@/stores/shoppingListStore'
 import AppBadge from './AppBadge.vue'
+import { computed } from 'vue'
 
-const props = defineProps<{ recipe: Recipe }>()
+const props = withDefaults(
+  defineProps<{
+    recipe: Recipe
+    variant?: 'default' | 'compact'
+  }>(),
+  {
+    variant: 'default',
+  },
+)
 
 const handleMouseMove = (event: MouseEvent) => {
   const card = event.currentTarget
@@ -22,7 +31,7 @@ const handleMouseMove = (event: MouseEvent) => {
 }
 
 const shoppingListStore = useShoppingListStore()
-const onShoppingList = shoppingListStore.hasRecipe(props.recipe)
+const onShoppingList = computed(() => shoppingListStore.hasRecipe(props.recipe))
 </script>
 
 <template>
@@ -32,19 +41,25 @@ const onShoppingList = shoppingListStore.hasRecipe(props.recipe)
         name: 'Recipe',
         params: { id: recipe.id },
       }"
-      class="card h-65 bg-white/10"
+      class="card bg-white/10"
+      :class="variant === 'default' ? 'h-65' : 'h-18'"
     >
       <div
-        class="card-body p-0 absolute z-2 rounded-[inherit] inset-px bg-base-200 hover:before:opacity-100 hover:after:opacity-100"
+        class="card-body p-0 absolute z-2 rounded-[inherit] inset-px bg-base-200 hover:before:opacity-100 hover:after:opacity-100 hover:before:-ms-2"
+        :class="{ 'flex flex-row justify-start': variant === 'compact' }"
       >
-        <figure>
+        <figure :class="{ 'max-w-18 rounded-s-lg rounded-e-none': variant === 'compact' }">
           <img
             :src="`/images/${recipe.imageUrl}`"
             :alt="`Image of ${recipe.title}`"
             class="max-h-55 w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
           />
         </figure>
-        <div class="px-4 pb-4">
+        <div
+          :class="
+            variant === 'default' ? 'px-4 pb-3' : 'px-2 flex flex-col justify-center -mt-0.75'
+          "
+        >
           <h3 class="card-title">
             <span class="truncate">{{ recipe.title }}</span>
           </h3>
@@ -71,6 +86,7 @@ const onShoppingList = shoppingListStore.hasRecipe(props.recipe)
     />
 
     <FavoriteButton
+      v-if="variant === 'default'"
       :recipe-id="recipe.id"
       :recipe-title="recipe.title"
       type="soft"
