@@ -4,9 +4,10 @@ import { useShoppingListStore } from '@/stores/shoppingListStore'
 import { ShoppingBasketIcon, TrashIcon } from 'lucide-vue-next'
 import { storeToRefs } from 'pinia'
 import { useConfirmDialog } from '@/composable/useConfirmDialog'
+import RecipeCard from '@/components/RecipeCard.vue'
 
 const shoppingListStore = useShoppingListStore()
-const { ingredients } = storeToRefs(shoppingListStore)
+const { recipes, ingredients } = storeToRefs(shoppingListStore)
 
 const { confirmDialog } = useConfirmDialog()
 const clearShoppingList = async () => {
@@ -40,12 +41,33 @@ const clearShoppingList = async () => {
       <span>.</span>
     </p>
 
-    <div class="card bg-base-200 shadow-sm" v-else>
-      <div class="card-body p-4 gap-y-2">
-        <IngredientsList :ingredients="ingredients" />
+    <div v-else>
+      <div class="card bg-base-200 shadow-sm mb-4">
+        <div class="card-body p-4">
+          <h2 class="card-title lg:text-2xl mb-2">Ingredients</h2>
 
-        <button class="btn btn-error ms-auto mt-4" @click="clearShoppingList()">
-          <TrashIcon aria-hidden="true" /><span>Clear Shopping List</span>
+          <IngredientsList :ingredients="ingredients" />
+        </div>
+      </div>
+
+      <div class="card bg-base-200 shadow-sm">
+        <div class="card-body p-4">
+          <h2 class="card-title lg:text-2xl mb-2">Ready to cook</h2>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <RecipeCard
+              v-for="recipe in recipes"
+              :key="recipe.id"
+              :recipe="recipe"
+              variant="compact"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-4 flex justify-end">
+        <button class="btn btn-error" @click="clearShoppingList()">
+          <TrashIcon aria-hidden="true" /><span>Clear shopping list</span>
         </button>
       </div>
     </div>

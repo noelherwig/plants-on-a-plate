@@ -18,7 +18,7 @@ import SidebarLink from './SidebarLink.vue'
 
           <SidebarLink
             to="/shopping-list"
-            label="Shopping List"
+            label="Shopping list"
             color="blue"
             :icon="ShoppingBasketIcon"
           />

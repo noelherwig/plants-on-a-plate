@@ -65,7 +65,7 @@ const addToShoppingList = async () => {
         @click="addToShoppingList()"
         :disabled="ingredientsAdded"
       >
-        <PlusIcon aria-hidden="true" /><span>Add to Shopping List</span>
+        <PlusIcon aria-hidden="true" /><span>Add to shopping list</span>
       </button>
       <span
         class="flex items-center justify-end text-(--color-green) gap-1"

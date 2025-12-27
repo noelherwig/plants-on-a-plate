@@ -48,7 +48,7 @@ const onShoppingList = computed(() => shoppingListStore.hasRecipe(props.recipe))
         class="card-body p-0 absolute z-2 rounded-[inherit] inset-px bg-base-200 hover:before:opacity-100 hover:after:opacity-100 hover:before:-ms-2"
         :class="{ 'flex flex-row justify-start': variant === 'compact' }"
       >
-        <figure :class="{ 'max-w-18 rounded-s-lg rounded-e-none': variant === 'compact' }">
+        <figure :class="{ 'w-18 min-w-18 rounded-s-lg rounded-e-none': variant === 'compact' }">
           <img
             :src="`/images/${recipe.imageUrl}`"
             :alt="`Image of ${recipe.title}`"
@@ -56,6 +56,7 @@ const onShoppingList = computed(() => shoppingListStore.hasRecipe(props.recipe))
           />
         </figure>
         <div
+          class="truncate"
           :class="
             variant === 'default' ? 'px-4 pb-3' : 'px-2 flex flex-col justify-center -mt-0.75'
           "
@@ -68,18 +69,20 @@ const onShoppingList = computed(() => shoppingListStore.hasRecipe(props.recipe))
             <ClockIcon :size="16" class="me-2" aria-hidden="true" />
             <span>{{ recipe.minutes }} min</span>
 
-            <span v-if="recipe.categories.length" class="mx-2"> • </span>
+            <div v-if="recipe.categories.length && variant === 'default'">
+              <span class="mx-2"> • </span>
 
-            <span class="truncate">
-              {{ recipe.categories.join(', ') }}
-            </span>
+              <span class="truncate">
+                {{ recipe.categories.join(', ') }}
+              </span>
+            </div>
           </div>
         </div>
       </div>
     </RouterLink>
 
     <AppBadge
-      v-if="onShoppingList"
+      v-if="onShoppingList && variant === 'default'"
       :icon="ShoppingBasketIcon"
       label="Added"
       class="absolute top-2 left-2 z-9"
