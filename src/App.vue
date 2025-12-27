@@ -15,7 +15,7 @@ import ConfirmDialog from './components/ConfirmDialog.vue'
   <ConfirmDialog />
 </template>
 
-<style>
+<style scoped>
 .fade-enter-active,
 .fade-leave-active {
   transition: opacity 0.1s ease;

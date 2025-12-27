@@ -25,13 +25,13 @@ const adjustedIngredients = computed(() =>
 
 const shoppingListStore = useShoppingListStore()
 const ingredientsAdded = ref(false)
-const alreadyAdded = computed(() => shoppingListStore.recipes.includes(props.recipe))
+const onShoppingList = shoppingListStore.hasRecipe(props.recipe)
 
 const { confirmDialog } = useConfirmDialog()
 const addToShoppingList = async () => {
   // Ask for confirmation only if the recipe is already in the shopping list
   const shouldAdd =
-    !alreadyAdded.value ||
+    !onShoppingList ||
     (await confirmDialog({
       title: 'Recipe added previously',
       message:

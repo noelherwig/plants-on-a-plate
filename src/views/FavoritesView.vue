@@ -10,7 +10,7 @@ import { computed, ref } from 'vue'
 
 const favoriteStore = useFavoriteStore()
 const favoriteRecipes = computed(() =>
-  recipes.filter((recipe) => favoriteStore.favoriteRecipeIds.includes(recipe.id)),
+  recipes.filter((recipe) => favoriteStore.isFavorite(recipe.id)),
 )
 
 const searchTerm = ref('')

@@ -35,5 +35,7 @@ export const useShoppingListStore = defineStore('shoppingList', () => {
     ingredients.value = []
   }
 
-  return { recipes, ingredients, add, clear }
+  const hasRecipe = (recipe: Recipe): boolean => recipes.value.some((r) => r.id === recipe.id)
+
+  return { recipes, ingredients, add, clear, hasRecipe }
 })
