@@ -58,7 +58,7 @@ const onShoppingList = computed(() => shoppingListStore.hasRecipe(props.recipe))
         <div
           class="truncate"
           :class="
-            variant === 'default' ? 'px-4 pb-3' : 'px-2 flex flex-col justify-center -mt-0.75'
+            variant === 'default' ? 'px-4 pb-4' : 'px-2 flex flex-col justify-center -mt-0.75'
           "
         >
           <h3 class="card-title">

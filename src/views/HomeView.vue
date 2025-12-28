@@ -5,11 +5,14 @@ import RandomRecipeButton from '@/components/RandomRecipeButton.vue'
 import useSearch from '@/composable/useSearch'
 import { LeafIcon } from 'lucide-vue-next'
 import { ref } from 'vue'
-import recipes from '@/data/recipes'
+import { useRecipeStore } from '@/stores/recipeStore'
+import { storeToRefs } from 'pinia'
 
-const allRecipes = ref(recipes)
+const recipeStore = useRecipeStore()
+const { recipes } = storeToRefs(recipeStore)
+
 const searchTerm = ref('')
-const { searchResults } = useSearch(searchTerm, allRecipes)
+const { searchResults } = useSearch(searchTerm, recipes)
 </script>
 
 <template>
@@ -23,7 +26,7 @@ const { searchResults } = useSearch(searchTerm, allRecipes)
       <RecipeSearch v-model="searchTerm" />
       <div class="flex items-center">
         <p class="mx-4" aria-hidden="true">or</p>
-        <RandomRecipeButton :recipes="allRecipes" />
+        <RandomRecipeButton :recipes="recipes" />
       </div>
     </div>
 

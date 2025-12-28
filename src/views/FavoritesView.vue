@@ -3,18 +3,16 @@ import RecipeCard from '@/components/RecipeCard.vue'
 import RecipeSearch from '@/components/RecipeSearch.vue'
 import RandomRecipeButton from '@/components/RandomRecipeButton.vue'
 import useSearch from '@/composable/useSearch'
-import recipes from '@/data/recipes'
-import { useFavoriteStore } from '@/stores/favoriteStore'
 import { HeartIcon } from 'lucide-vue-next'
-import { computed, ref } from 'vue'
+import { ref } from 'vue'
+import { useRecipeStore } from '@/stores/recipeStore'
+import { storeToRefs } from 'pinia'
 
-const favoriteStore = useFavoriteStore()
-const favoriteRecipes = computed(() =>
-  recipes.filter((recipe) => favoriteStore.isFavorite(recipe.id)),
-)
+const recipeStore = useRecipeStore()
+const { favorites } = storeToRefs(recipeStore)
 
 const searchTerm = ref('')
-const { searchResults } = useSearch(searchTerm, favoriteRecipes)
+const { searchResults } = useSearch(searchTerm, favorites)
 </script>
 
 <template>
@@ -28,7 +26,7 @@ const { searchResults } = useSearch(searchTerm, favoriteRecipes)
       <RecipeSearch v-model="searchTerm" />
       <div class="flex items-center">
         <p class="mx-4" aria-hidden="true">or</p>
-        <RandomRecipeButton :recipes="favoriteRecipes" type="favorite" label="Random favorite" />
+        <RandomRecipeButton :recipes="favorites" type="favorite" label="Random favorite" />
       </div>
     </div>
 
@@ -39,13 +37,13 @@ const { searchResults } = useSearch(searchTerm, favoriteRecipes)
     </div>
 
     <p
-      v-if="!searchResults.length && favoriteRecipes.length"
+      v-if="!searchResults.length && favorites.length"
       class="col-span-full text-center text-base-content/60"
     >
       No recipes found with "{{ searchTerm }}". Try a different search term.
     </p>
 
-    <p v-if="!favoriteRecipes.length" class="col-span-full text-center text-base-content/60">
+    <p v-if="!favorites.length" class="col-span-full text-center text-base-content/60">
       You haven't added any favorite recipes yet! Take a look at
       <RouterLink :to="'/'" class="link text-(--color-green)">all recipes</RouterLink>.
     </p>

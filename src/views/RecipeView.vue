@@ -1,19 +1,16 @@
 <script setup lang="ts">
-import type { Recipe } from '@/data/recipes'
-import recipes from '@/data/recipes'
-import { computed, type ComputedRef } from 'vue'
-import { useRoute } from 'vue-router'
+import { computed } from 'vue'
 import RecipeIngredients from '@/components/RecipeIngredients.vue'
 import FavoriteButton from '@/components/FavoriteButton.vue'
 import BackButton from '@/components/BackButton.vue'
 import RecipeDetails from '@/components/RecipeDetails.vue'
 import CookingSteps from '@/components/CookingSteps.vue'
+import { useRecipeStore } from '@/stores/recipeStore'
 
-const route = useRoute()
+const props = defineProps<{ id: string }>()
 
-const recipe: ComputedRef<Recipe | undefined> = computed(() =>
-  recipes.find((recipe) => recipe.id === route.params.id),
-)
+const recipeStore = useRecipeStore()
+const recipe = computed(() => recipeStore.getById(props.id))
 </script>
 
 <template>
