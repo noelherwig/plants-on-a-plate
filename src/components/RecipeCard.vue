@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ClockIcon, ShoppingBasketIcon } from 'lucide-vue-next'
 import FavoriteButton from './FavoriteButton.vue'
-import type { Recipe } from '@/data/recipes'
+import type { Recipe } from '@/types/recipe'
 import { useShoppingListStore } from '@/stores/shoppingListStore'
 import AppBadge from './AppBadge.vue'
 import { computed } from 'vue'

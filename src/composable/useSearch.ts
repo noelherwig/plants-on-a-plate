@@ -1,4 +1,4 @@
-import type { Recipe } from '@/data/recipes'
+import type { Recipe } from '@/types/recipe'
 import { computed, type Ref } from 'vue'
 
 export default function useSearch(searchTerm: Ref<string>, recipes: Ref<Recipe[]>) {

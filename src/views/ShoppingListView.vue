@@ -66,7 +66,7 @@ const clearShoppingList = async () => {
       </div>
 
       <div class="mt-4 flex justify-end">
-        <button class="btn btn-error" @click="clearShoppingList()">
+        <button class="btn btn-error btn-soft" @click="clearShoppingList()">
           <TrashIcon aria-hidden="true" /><span>Clear shopping list</span>
         </button>
       </div>

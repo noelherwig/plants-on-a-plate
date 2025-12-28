@@ -1,4 +1,4 @@
-import type { Recipe, Ingredient } from '@/data/recipes'
+import type { Recipe, Ingredient } from '@/types/recipe'
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
 

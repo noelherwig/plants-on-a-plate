@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
-import type { Recipe } from '@/data/recipes'
+import type { Recipe } from '@/types/recipe'
 import recipesMockData from '@/data/recipes'
 
 export const useRecipeStore = defineStore('recipes', () => {

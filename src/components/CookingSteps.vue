@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { CookingStep } from '@/data/recipes'
+import type { CookingStep } from '@/types/recipe'
 import { CircleCheckBigIcon, CircleDashedIcon } from 'lucide-vue-next'
 import { ref } from 'vue'
 

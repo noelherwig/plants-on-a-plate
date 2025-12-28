@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { Recipe } from '@/data/recipes'
+import type { Recipe } from '@/types/recipe'
 import { CircleCheckIcon, PlusIcon, UsersIcon } from 'lucide-vue-next'
 import { computed, ref } from 'vue'
 import NumberStepper from './NumberStepper.vue'

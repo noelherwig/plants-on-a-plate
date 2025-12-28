@@ -1,4 +1,4 @@
-import { type Recipe } from '@/data/recipes'
+import type { Recipe } from '@/types/recipe'
 
 export default function useRandomRecipe(recipes: Recipe[] = []) {
   const getRandomRecipe = (): Recipe | null => {

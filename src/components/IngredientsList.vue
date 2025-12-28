@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { Ingredient } from '@/data/recipes'
+import type { Ingredient } from '@/types/recipe'
 import { ref } from 'vue'
 
 defineProps<{ ingredients: (Ingredient & { adjustedAmount?: number })[] }>()

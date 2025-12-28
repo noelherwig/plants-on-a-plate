@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { Recipe } from '@/data/recipes'
+import type { Recipe } from '@/types/recipe'
 import RecipeStat from '@/components/RecipeStat.vue'
 import { ClockIcon, FlameIcon, BicepsFlexedIcon, VeganIcon } from 'lucide-vue-next'
 

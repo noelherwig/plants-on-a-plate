@@ -2,7 +2,7 @@
 import { useRouter } from 'vue-router'
 import { DicesIcon } from 'lucide-vue-next'
 import useRandomRecipe from '@/composable/useRandomRecipe'
-import type { Recipe } from '@/data/recipes'
+import type { Recipe } from '@/types/recipe'
 
 const props = withDefaults(
   defineProps<{
