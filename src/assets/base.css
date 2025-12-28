@@ -62,4 +62,6 @@ body {
   --color-pink-content: var(--color-pink-950);
   --color-blue: var(--color-sky-400);
   --color-blue-content: var(--color-sky-950);
+  --color-yellow: var(--color-amber-400);
+  --color-yellow-content: var(--color-amber-950);
 }
