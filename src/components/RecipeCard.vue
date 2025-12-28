@@ -5,6 +5,7 @@ import type { Recipe } from '@/types/recipe'
 import { useShoppingListStore } from '@/stores/shoppingListStore'
 import AppBadge from './AppBadge.vue'
 import { computed } from 'vue'
+import SaveButton from './SaveButton.vue'
 
 const props = withDefaults(
   defineProps<{
@@ -88,13 +89,11 @@ const onShoppingList = computed(() => shoppingListStore.hasRecipe(props.recipe.i
       class="absolute top-2 left-2 z-9"
     />
 
-    <FavoriteButton
-      v-if="variant === 'default'"
-      :recipe-id="recipe.id"
-      :recipe-title="recipe.title"
-      type="soft"
-      class="absolute top-2 right-2 z-9"
-    />
+    <div class="absolute top-2 right-2 z-9 flex flex-col gap-2" v-if="variant === 'default'">
+      <FavoriteButton :recipe-id="recipe.id" :recipe-title="recipe.title" type="soft" />
+
+      <SaveButton :recipe-id="recipe.id" :recipe-title="recipe.title" type="soft" />
+    </div>
   </div>
 </template>
 
