@@ -4,7 +4,7 @@ import type { FunctionalComponent } from 'vue'
 defineProps<{
   to: string
   label: string
-  color: 'green' | 'pink' | 'blue'
+  color: 'green' | 'pink' | 'yellow' | 'blue'
   icon: FunctionalComponent
 }>()
 
@@ -12,6 +12,7 @@ defineProps<{
 const styleMap = {
   ['green']: 'bg-(--color-green) text-(--color-green-content)',
   ['pink']: 'bg-(--color-pink)  text-(--color-pink-content)',
+  ['yellow']: 'bg-(--color-yellow)  text-(--color-yellow-content)',
   ['blue']: 'bg-(--color-blue)  text-(--color-blue-content)',
 }
 </script>

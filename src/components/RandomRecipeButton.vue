@@ -4,14 +4,20 @@ import { DicesIcon } from 'lucide-vue-next'
 import useRandomRecipe from '@/composable/useRandomRecipe'
 import type { Recipe } from '@/types/recipe'
 
+const styleMap = {
+  default: { icon: '', text: '' },
+  pink: { icon: 'text-(--color-pink)', text: 'text-(--color-pink-content)' },
+  yellow: { icon: 'text-(--color-yellow)', text: 'text-(--color-yellow-content)' },
+}
+
 const props = withDefaults(
   defineProps<{
     recipes: Recipe[]
-    type?: 'default' | 'favorite'
+    color?: 'default' | 'pink' | 'yellow'
     label?: string
   }>(),
   {
-    type: 'default',
+    color: 'default',
     label: 'Random recipe',
   },
 )
@@ -36,12 +42,9 @@ const goToRandomRecipe = () => {
     class="btn btn-primary sm:btn-lg gap-2 ps-4"
     @click="goToRandomRecipe()"
     :disabled="!recipes.length"
-    :class="{ 'text-(--color-pink-content)': type === 'favorite' && recipes.length }"
+    :class="recipes.length ? styleMap[props.color].text : ''"
   >
-    <DicesIcon
-      aria-hidden="true"
-      :class="{ 'text-(--color-pink)': type === 'favorite' && recipes.length }"
-    />
+    <DicesIcon aria-hidden="true" :class="recipes.length ? styleMap[props.color].icon : ''" />
     {{ label }}
   </button>
 </template>

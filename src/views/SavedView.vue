@@ -3,30 +3,32 @@ import RecipeCard from '@/components/RecipeCard.vue'
 import RecipeSearch from '@/components/RecipeSearch.vue'
 import RandomRecipeButton from '@/components/RandomRecipeButton.vue'
 import useSearch from '@/composable/useSearch'
-import { HeartIcon } from 'lucide-vue-next'
+import { BookmarkIcon } from 'lucide-vue-next'
 import { ref } from 'vue'
 import { storeToRefs } from 'pinia'
-import { useFavoriteStore } from '@/stores/favoriteStore'
+import { useSavedStore } from '@/stores/savedStore'
 
-const favoriteStore = useFavoriteStore()
-const { favorites } = storeToRefs(favoriteStore)
+const savedStore = useSavedStore()
+const { saved } = storeToRefs(savedStore)
 
 const searchTerm = ref('')
-const { searchResults } = useSearch(searchTerm, favorites)
+const { searchResults } = useSearch(searchTerm, saved)
+
+savedStore.save('1')
 </script>
 
 <template>
   <div class="container max-w-300 mx-auto">
     <h1 class="text-xl font-bold mb-4 flex items-center gap-2">
-      <HeartIcon class="text-(--color-pink)" aria-hidden="true" />
-      Your favorite recipes
+      <BookmarkIcon class="text-(--color-yellow)" aria-hidden="true" />
+      Your saved recipes
     </h1>
 
     <div class="flex flex-col sm:flex-row items-end">
       <RecipeSearch v-model="searchTerm" />
       <div class="flex items-center">
         <p class="mx-4" aria-hidden="true">or</p>
-        <RandomRecipeButton :recipes="favorites" color="pink" label="Random favorite" />
+        <RandomRecipeButton :recipes="saved" color="yellow" label="Random saved" />
       </div>
     </div>
 
@@ -37,14 +39,14 @@ const { searchResults } = useSearch(searchTerm, favorites)
     </div>
 
     <p
-      v-if="!searchResults.length && favorites.length"
+      v-if="!searchResults.length && saved.length"
       class="col-span-full text-center text-base-content/60"
     >
       No recipes found with "{{ searchTerm }}". Try a different search term.
     </p>
 
-    <p v-if="!favorites.length" class="col-span-full text-center text-base-content/60">
-      You haven't added any favorite recipes yet! Take a look at
+    <p v-if="!saved.length" class="col-span-full text-center text-base-content/60">
+      You haven't saved any recipes for later yet! Take a look at
       <RouterLink :to="'/'" class="link text-(--color-green)">all recipes</RouterLink>.
     </p>
   </div>
