@@ -10,7 +10,7 @@ const props = defineProps<{
 // DaisyUI's Collapse Element is open for "true" and closed for "false"
 // Hence, "uncompletedSteps" is used to track the completed steps
 const uncompletedSteps = ref<Record<string, boolean>>(
-  Object.fromEntries(props.steps.map((step) => [step.id, true])),
+  Object.fromEntries(props.steps.map(({ id }) => [id, true])),
 )
 </script>
 

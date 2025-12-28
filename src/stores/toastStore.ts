@@ -27,7 +27,7 @@ export const useToastStore = defineStore('toast', () => {
     setTimeout(() => clear(toast), 5000)
   }
 
-  const clear = (toast: Toast) => (toasts.value = toasts.value.filter((t) => t.id !== toast.id))
+  const clear = (toast: Toast) => (toasts.value = toasts.value.filter(({ id }) => id !== toast.id))
 
   return { toasts, show, clear }
 })

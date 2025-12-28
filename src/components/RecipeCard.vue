@@ -31,7 +31,7 @@ const handleMouseMove = (event: MouseEvent) => {
 }
 
 const shoppingListStore = useShoppingListStore()
-const onShoppingList = computed(() => shoppingListStore.hasRecipe(props.recipe))
+const onShoppingList = computed(() => shoppingListStore.hasRecipe(props.recipe.id))
 </script>
 
 <template>

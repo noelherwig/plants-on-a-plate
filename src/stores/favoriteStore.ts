@@ -6,9 +6,8 @@ export const useFavoriteStore = defineStore('favorite', () => {
   const recipeStore = useRecipeStore()
 
   const favoriteIds = ref<string[]>([])
-
   const favorites = computed(() =>
-    recipeStore.recipes.filter((recipe) => favoriteIds.value.includes(recipe.id)),
+    recipeStore.recipes.filter(({ id }) => favoriteIds.value.includes(id)),
   )
 
   const isFavorite = (id: string) => favoriteIds.value.includes(id)

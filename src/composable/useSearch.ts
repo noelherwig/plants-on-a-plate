@@ -9,7 +9,7 @@ export default function useSearch(searchTerm: Ref<string>, recipes: Ref<Recipe[]
       return recipes.value
     }
 
-    return recipes.value.filter((recipe) => recipe.title.trim().toLowerCase().includes(term))
+    return recipes.value.filter(({ title }) => title.trim().toLowerCase().includes(term))
   })
 
   return { searchResults }
