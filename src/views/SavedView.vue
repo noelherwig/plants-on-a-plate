@@ -13,8 +13,6 @@ const { saved } = storeToRefs(savedStore)
 
 const searchTerm = ref('')
 const { searchResults } = useSearch(searchTerm, saved)
-
-savedStore.save('1')
 </script>
 
 <template>

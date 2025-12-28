@@ -17,6 +17,9 @@ const props = withDefaults(
   },
 )
 
+const shoppingListStore = useShoppingListStore()
+const onShoppingList = computed(() => shoppingListStore.hasRecipe(props.recipe.id))
+
 const handleMouseMove = (event: MouseEvent) => {
   const card = event.currentTarget
   if (!(card instanceof HTMLElement)) {
@@ -30,9 +33,6 @@ const handleMouseMove = (event: MouseEvent) => {
   card.style.setProperty('--mouse-x', `${x}px`)
   card.style.setProperty('--mouse-y', `${y}px`)
 }
-
-const shoppingListStore = useShoppingListStore()
-const onShoppingList = computed(() => shoppingListStore.hasRecipe(props.recipe.id))
 </script>
 
 <template>

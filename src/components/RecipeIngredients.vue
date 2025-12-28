@@ -25,7 +25,7 @@ const adjustedIngredients = computed(() =>
 
 const shoppingListStore = useShoppingListStore()
 const ingredientsAdded = ref(false)
-const onShoppingList = shoppingListStore.hasRecipe(props.recipe)
+const onShoppingList = shoppingListStore.hasRecipe(props.recipe.id)
 
 const { confirmDialog } = useConfirmDialog()
 const addToShoppingList = async () => {
