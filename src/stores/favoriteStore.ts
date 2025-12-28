@@ -1,8 +1,15 @@
 import { defineStore } from 'pinia'
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
+import { useRecipeStore } from './recipeStore'
 
 export const useFavoriteStore = defineStore('favorite', () => {
+  const recipeStore = useRecipeStore()
+
   const favoriteIds = ref<string[]>([])
+
+  const favorites = computed(() =>
+    recipeStore.recipes.filter((recipe) => favoriteIds.value.includes(recipe.id)),
+  )
 
   const isFavorite = (id: string) => favoriteIds.value.includes(id)
 
@@ -13,5 +20,5 @@ export const useFavoriteStore = defineStore('favorite', () => {
 
   const toggle = (id: string) => (isFavorite(id) ? remove(id) : add(id))
 
-  return { favoriteIds, isFavorite, remove, add, toggle }
+  return { favorites, isFavorite, remove, add, toggle }
 })

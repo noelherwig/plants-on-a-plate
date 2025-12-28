@@ -5,11 +5,11 @@ import RandomRecipeButton from '@/components/RandomRecipeButton.vue'
 import useSearch from '@/composable/useSearch'
 import { HeartIcon } from 'lucide-vue-next'
 import { ref } from 'vue'
-import { useRecipeStore } from '@/stores/recipeStore'
 import { storeToRefs } from 'pinia'
+import { useFavoriteStore } from '@/stores/favoriteStore'
 
-const recipeStore = useRecipeStore()
-const { favorites } = storeToRefs(recipeStore)
+const favoriteStore = useFavoriteStore()
+const { favorites } = storeToRefs(favoriteStore)
 
 const searchTerm = ref('')
 const { searchResults } = useSearch(searchTerm, favorites)
