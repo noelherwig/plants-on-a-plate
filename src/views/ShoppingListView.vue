@@ -5,6 +5,7 @@ import { ShoppingBasketIcon, TrashIcon } from 'lucide-vue-next'
 import { storeToRefs } from 'pinia'
 import { useConfirmDialog } from '@/composable/useConfirmDialog'
 import RecipeCard from '@/components/RecipeCard.vue'
+import AppDivider from '@/components/AppDivider.vue'
 
 const shoppingListStore = useShoppingListStore()
 const { recipes, ingredients } = storeToRefs(shoppingListStore)
@@ -29,7 +30,7 @@ const clearShoppingList = async () => {
       Your shopping list
     </h1>
 
-    <hr class="my-8 h-0.5 border-t-0 bg-neutral" role="separator" />
+    <AppDivider class="my-8" />
 
     <p class="col-span-full text-center text-base-content/60" v-if="!ingredients.length">
       <span>Your shopping list is still empty! Take a look at </span>

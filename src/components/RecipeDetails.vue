@@ -2,6 +2,7 @@
 import type { Recipe } from '@/types/recipe'
 import RecipeStat from '@/components/RecipeStat.vue'
 import { ClockIcon, FlameIcon, BicepsFlexedIcon, VeganIcon } from 'lucide-vue-next'
+import AppDivider from './AppDivider.vue'
 
 defineProps<{ recipe: Recipe }>()
 </script>
@@ -18,7 +19,9 @@ defineProps<{ recipe: Recipe }>()
         <RecipeStat :icon="BicepsFlexedIcon" :label="`${recipe.statistics.protein}g protein`" />
         <RecipeStat :icon="VeganIcon" label="100% vegan" class="text-(--color-green)" />
       </div>
-      <hr class="my-2 h-0.5 border-t-0 bg-neutral" role="separator" />
+
+      <AppDivider class="my-2" />
+
       <p class="max-w-172 text-pretty whitespace-pre-line">{{ recipe.description }}</p>
     </div>
 

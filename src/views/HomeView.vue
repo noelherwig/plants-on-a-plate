@@ -7,6 +7,7 @@ import { LeafIcon } from 'lucide-vue-next'
 import { ref } from 'vue'
 import { useRecipeStore } from '@/stores/recipeStore'
 import { storeToRefs } from 'pinia'
+import AppDivider from '@/components/AppDivider.vue'
 
 const recipeStore = useRecipeStore()
 const { recipes } = storeToRefs(recipeStore)
@@ -30,7 +31,7 @@ const { searchResults } = useSearch(searchTerm, recipes)
       </div>
     </div>
 
-    <hr class="my-8 h-0.5 border-t-0 bg-neutral" role="separator" />
+    <AppDivider class="my-8" />
 
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" v-if="recipes.length > 0">
       <RecipeCard v-for="recipe in searchResults" :key="recipe.id" :recipe="recipe" />

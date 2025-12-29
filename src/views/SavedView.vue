@@ -7,6 +7,7 @@ import { BookmarkIcon } from 'lucide-vue-next'
 import { ref } from 'vue'
 import { storeToRefs } from 'pinia'
 import { useSavedStore } from '@/stores/savedStore'
+import AppDivider from '@/components/AppDivider.vue'
 
 const savedStore = useSavedStore()
 const { saved } = storeToRefs(savedStore)
@@ -30,7 +31,7 @@ const { searchResults } = useSearch(searchTerm, saved)
       </div>
     </div>
 
-    <hr class="my-8 h-0.5 border-t-0 bg-neutral" role="separator" />
+    <AppDivider class="my-8" />
 
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
       <RecipeCard v-for="recipe in searchResults" :key="recipe.id" :recipe="recipe" />
