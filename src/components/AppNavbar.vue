@@ -15,7 +15,13 @@ import { PanelRightOpenIcon } from 'lucide-vue-next'
       rel="noopener noreferrer"
       aria-label="Plants On A Plate on GitHub (opens in new tab)"
     >
-      <span class="text-xl italic">Plants on a Plate</span>
+      <img
+        alt="Plants on a Plate icon"
+        src="@/assets/plants-on-a-plate.svg"
+        class="h-8 w-auto me-1"
+        aria-hidden="true"
+      />
+      <span class="text-xl">Plants on a Plate</span>
     </a>
   </nav>
 </template>
