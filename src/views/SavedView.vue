@@ -20,13 +20,13 @@ const { searchResults } = useSearch(searchTerm, saved)
   <div class="container max-w-300 mx-auto">
     <h1 class="text-xl font-bold mb-4 flex items-center gap-2">
       <BookmarkIcon class="text-(--color-yellow)" aria-hidden="true" />
-      Your saved recipes
+      <span>Your saved recipes</span>
     </h1>
 
-    <div class="flex flex-col sm:flex-row items-end">
+    <div class="flex flex-col sm:flex-row items-end gap-4">
       <RecipeSearch v-model="searchTerm" />
-      <div class="flex items-center">
-        <p class="mx-4" aria-hidden="true">or</p>
+      <div class="flex items-center gap-4">
+        <span aria-hidden="true">or</span>
         <RandomRecipeButton :recipes="saved" color="yellow" label="Random saved" />
       </div>
     </div>
