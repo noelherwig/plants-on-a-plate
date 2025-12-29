@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import RecipeCard from '@/components/RecipeCard.vue'
 import RecipeSearch from '@/components/RecipeSearch.vue'
 import RandomRecipeButton from '@/components/RandomRecipeButton.vue'
 import useSearch from '@/composable/useSearch'
@@ -8,9 +7,10 @@ import { ref } from 'vue'
 import { useRecipeStore } from '@/stores/recipeStore'
 import { storeToRefs } from 'pinia'
 import AppDivider from '@/components/AppDivider.vue'
+import RecipeGrid from '@/components/RecipeGrid.vue'
 
 const recipeStore = useRecipeStore()
-const { recipes } = storeToRefs(recipeStore)
+const { recipes, pending, error } = storeToRefs(recipeStore)
 
 const searchTerm = ref('')
 const { searchResults } = useSearch(searchTerm, recipes)
@@ -33,27 +33,11 @@ const { searchResults } = useSearch(searchTerm, recipes)
 
     <AppDivider class="my-8" />
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" v-if="recipes.length > 0">
-      <RecipeCard v-for="recipe in searchResults" :key="recipe.id" :recipe="recipe" />
-    </div>
-
-    <div v-else class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" aria>
-      <div class="skeleton h-65"></div>
-      <div class="skeleton h-65"></div>
-      <div class="skeleton h-65"></div>
-      <div class="skeleton h-65"></div>
-      <div class="skeleton h-65"></div>
-      <div class="skeleton h-65"></div>
-      <div class="skeleton h-65"></div>
-      <div class="skeleton h-65"></div>
-      <div class="skeleton h-65"></div>
-    </div>
-
-    <p
-      v-if="!searchResults.length && searchTerm"
-      class="col-span-full text-center text-base-content/60"
-    >
-      No recipes found with "{{ searchTerm }}". Try a different search term.
-    </p>
+    <RecipeGrid
+      :recipes="searchResults"
+      :search-term="searchTerm"
+      :pending="pending"
+      :error="error"
+    />
   </div>
 </template>

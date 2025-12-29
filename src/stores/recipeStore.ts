@@ -6,9 +6,9 @@ import { useCollection } from 'vuefire'
 
 export const useRecipeStore = defineStore('recipes', () => {
   const recipesRef = collection(db, 'recipes')
-  const recipes = useCollection<Recipe>(recipesRef)
+  const { data: recipes, pending, error } = useCollection<Recipe>(recipesRef)
 
   const getById = (recipeId: string) => recipes.value.find(({ id }) => id === recipeId)
 
-  return { recipes, getById }
+  return { recipes, pending, error, getById }
 })
