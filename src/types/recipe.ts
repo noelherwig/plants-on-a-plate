@@ -5,12 +5,14 @@ export interface Recipe {
   categories: string[]
   imageUrl: string
   description: string
-  statistics: {
-    calories: number
-    protein: number
-  }
+  statistics: Statistics
   ingredients: Ingredient[]
   steps: CookingStep[]
+}
+
+export interface Statistics {
+  calories: number
+  protein: number
 }
 
 export interface Ingredient {
