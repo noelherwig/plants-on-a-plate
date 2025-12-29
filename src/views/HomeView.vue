@@ -36,7 +36,10 @@ const { searchResults } = useSearch(searchTerm, recipes)
       <RecipeCard v-for="recipe in searchResults" :key="recipe.id" :recipe="recipe" />
     </div>
 
-    <p v-if="!searchResults.length" class="col-span-full text-center text-base-content/60">
+    <p
+      v-if="!searchResults.length && searchTerm"
+      class="col-span-full text-center text-base-content/60"
+    >
       No recipes found with "{{ searchTerm }}". Try a different search term!
     </p>
   </div>

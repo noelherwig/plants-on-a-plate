@@ -1,10 +1,12 @@
 import { defineStore } from 'pinia'
-import { ref } from 'vue'
 import type { Recipe } from '@/types/recipe'
-import recipesMockData from '@/data/recipes'
+import { collection } from 'firebase/firestore'
+import { db } from '@/firebase/firebase'
+import { useCollection } from 'vuefire'
 
 export const useRecipeStore = defineStore('recipes', () => {
-  const recipes = ref<Recipe[]>(recipesMockData)
+  const recipesRef = collection(db, 'recipes')
+  const recipes = useCollection<Recipe>(recipesRef)
 
   const getById = (recipeId: string) => recipes.value.find(({ id }) => id === recipeId)
 
