@@ -33,8 +33,8 @@ const addFavorite = () => {
 const { confirmDialog } = useConfirmDialog()
 const removeFavorite = async () => {
   const confirmed = await confirmDialog({
-    title: 'Remove favorite',
-    message: `Are you sure you want to remove “${props.recipeTitle}” from your favorites?`,
+    title: 'Remove favorite recipe',
+    message: `Are you sure you want to remove “${props.recipeTitle}” from your favorite recipes?`,
   })
 
   if (confirmed) {
