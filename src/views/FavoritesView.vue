@@ -24,7 +24,7 @@ const { searchResults } = useSearch(searchTerm, favorites)
     </h1>
 
     <div class="flex flex-col sm:flex-row items-end gap-4">
-      <RecipeSearch v-model="searchTerm" />
+      <RecipeSearch v-model="searchTerm" :disabled="!favorites.length" />
       <div class="flex items-center gap-4">
         <span aria-hidden="true">or</span>
         <RandomRecipeButton :recipes="favorites" color="pink" label="Random favorite" />
