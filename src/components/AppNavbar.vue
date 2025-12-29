@@ -15,8 +15,7 @@ import { PanelRightOpenIcon } from 'lucide-vue-next'
       rel="noopener noreferrer"
       aria-label="Plants On A Plate on GitHub (opens in new tab)"
     >
-      <img alt="Aucapi icon" src="@/assets/aucapi-logo-icon-white.svg" class="h-9 w-auto me-1" />
-      <img alt="Aucapi text" src="@/assets/aucapi-logo-text-white.svg" class="h-5 w-auto" />
+      <span class="text-xl italic">Plants on a Plate</span>
     </a>
   </nav>
 </template>
