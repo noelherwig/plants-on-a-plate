@@ -5,7 +5,6 @@ import type { FirestoreError } from 'firebase/firestore'
 
 defineProps<{
   recipes: Recipe[]
-  searchTerm: string
   pending: boolean
   error: FirestoreError | undefined
 }>()
@@ -24,12 +23,6 @@ defineProps<{
     <template v-else-if="error">
       <p class="col-span-full text-error text-center">
         Failed to load recipes. Please try again later.
-      </p>
-    </template>
-
-    <template v-else-if="recipes.length === 0">
-      <p class="col-span-full text-center text-base-content/60">
-        No recipes found with "{{ searchTerm }}". Try a different search term.
       </p>
     </template>
 

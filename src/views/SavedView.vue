@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import RecipeCard from '@/components/RecipeCard.vue'
 import RecipeSearch from '@/components/RecipeSearch.vue'
 import RandomRecipeButton from '@/components/RandomRecipeButton.vue'
 import useSearch from '@/composable/useSearch'
@@ -8,9 +7,15 @@ import { ref } from 'vue'
 import { storeToRefs } from 'pinia'
 import { useSavedStore } from '@/stores/savedStore'
 import AppDivider from '@/components/AppDivider.vue'
+import { useRecipeStore } from '@/stores/recipeStore'
+import RecipeGrid from '@/components/RecipeGrid.vue'
+import RecipesNotFound from '@/components/RecipesNotFound.vue'
 
 const savedStore = useSavedStore()
 const { saved } = storeToRefs(savedStore)
+
+const recipeStore = useRecipeStore()
+const { pending, error } = storeToRefs(recipeStore)
 
 const searchTerm = ref('')
 const { searchResults } = useSearch(searchTerm, saved)
@@ -33,20 +38,20 @@ const { searchResults } = useSearch(searchTerm, saved)
 
     <AppDivider class="my-8" />
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-      <RecipeCard v-for="recipe in searchResults" :key="recipe.id" :recipe="recipe" />
-    </div>
+    <RecipeGrid
+      :recipes="searchResults"
+      :search-term="searchTerm"
+      :pending="pending"
+      :error="error"
+    />
 
-    <p
-      v-if="!searchResults.length && saved.length"
-      class="col-span-full text-center text-base-content/60"
-    >
-      No recipes found with "{{ searchTerm }}". Try a different search term.
-    </p>
+    <RecipesNotFound v-if="!searchResults.length && saved.length">
+      No saved recipes found with "{{ searchTerm }}". Try a different search term.
+    </RecipesNotFound>
 
-    <p v-if="!saved.length" class="col-span-full text-center text-base-content/60">
+    <RecipesNotFound v-if="!saved.length && !pending && !error">
       You haven't saved any recipes for later yet! Take a look at
       <RouterLink :to="'/'" class="link text-(--color-green)">all recipes</RouterLink>.
-    </p>
+    </RecipesNotFound>
   </div>
 </template>

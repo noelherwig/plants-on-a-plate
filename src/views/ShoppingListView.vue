@@ -35,9 +35,13 @@ const clearShoppingList = async () => {
     <p class="col-span-full text-center text-base-content/60" v-if="!ingredients.length">
       <span>Your shopping list is still empty! Take a look at </span>
       <RouterLink :to="{ name: 'Home' }" class="link text-(--color-green)">all recipes</RouterLink>
-      <span> or your </span>
+      <span>, your </span>
       <RouterLink :to="{ name: 'Favorites' }" class="link text-(--color-pink)">
         favorite recipes
+      </RouterLink>
+      <span>, or your </span>
+      <RouterLink :to="{ name: 'Saved' }" class="link text-(--color-yellow)">
+        saved recipes
       </RouterLink>
       <span>.</span>
     </p>

@@ -8,6 +8,7 @@ import { useRecipeStore } from '@/stores/recipeStore'
 import { storeToRefs } from 'pinia'
 import AppDivider from '@/components/AppDivider.vue'
 import RecipeGrid from '@/components/RecipeGrid.vue'
+import RecipesNotFound from '@/components/RecipesNotFound.vue'
 
 const recipeStore = useRecipeStore()
 const { recipes, pending, error } = storeToRefs(recipeStore)
@@ -39,5 +40,9 @@ const { searchResults } = useSearch(searchTerm, recipes)
       :pending="pending"
       :error="error"
     />
+
+    <RecipesNotFound v-if="!searchResults.length && searchTerm">
+      No recipes found with "{{ searchTerm }}". Try a different search term.
+    </RecipesNotFound>
   </div>
 </template>
