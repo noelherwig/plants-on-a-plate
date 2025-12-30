@@ -18,7 +18,7 @@ const recipe = computed(() => recipeStore.getById(props.id))
 </script>
 
 <template>
-  <div class="container max-w-300 mx-auto h-full flex flex-col">
+  <div class="container max-w-300 mx-auto flex flex-col">
     <div class="flex justify-between mb-4">
       <BackButton />
 

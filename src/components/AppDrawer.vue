@@ -13,7 +13,7 @@ import AppToast from './AppToast.vue'
       aria-label="Toggle sidebar navigation"
     />
 
-    <div class="drawer-content flex flex-col h-screen">
+    <div class="drawer-content flex flex-col h-dvh">
       <header>
         <AppNavbar />
       </header>
