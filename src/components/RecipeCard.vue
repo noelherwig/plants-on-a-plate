@@ -70,13 +70,13 @@ const handleMouseMove = (event: MouseEvent) => {
             <ClockIcon :size="16" class="me-2" aria-hidden="true" />
             <span>{{ recipe.minutes }} min</span>
 
-            <div v-if="recipe.categories.length && variant === 'default'">
+            <template v-if="recipe.categories.length && variant === 'default'">
               <span class="mx-2"> • </span>
 
               <span class="truncate">
                 {{ recipe.categories.join(', ') }}
               </span>
-            </div>
+            </template>
           </div>
         </div>
       </div>
