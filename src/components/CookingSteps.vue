@@ -23,7 +23,7 @@ const uncompletedSteps = ref<Record<string, boolean>>(
       :key="step.id"
       class="collapse border border-base-300 bg-base-100"
     >
-      <input type="checkbox" v-model="uncompletedSteps[step.id]" aria-hidden="true" />
+      <input type="checkbox" v-model="uncompletedSteps[step.id]" />
       <label class="collapse-title font-bold flex justify-between items-center px-4">
         <span>Step {{ index + 1 }}</span>
 
