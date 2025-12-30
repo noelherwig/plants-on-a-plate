@@ -11,16 +11,10 @@ const props = defineProps<{ recipe: Recipe }>()
 
 const servings = ref(2)
 const adjustedIngredients = computed(() =>
-  props.recipe.ingredients.map((ingredient) => {
-    if (ingredient.quantity === undefined) {
-      return { ...ingredient, quantity: 0 }
-    }
-
-    return {
-      ...ingredient,
-      quantity: ingredient.quantity * servings.value,
-    }
-  }),
+  props.recipe.ingredients.map((ingredient) => ({
+    ...ingredient,
+    quantity: ingredient.quantity * servings.value,
+  })),
 )
 
 const shoppingListStore = useShoppingListStore()
