@@ -12,13 +12,13 @@ const props = defineProps<{ recipe: Recipe }>()
 const servings = ref(2)
 const adjustedIngredients = computed(() =>
   props.recipe.ingredients.map((ingredient) => {
-    if (ingredient.amount === undefined) {
-      return { ...ingredient, adjustedAmount: undefined }
+    if (ingredient.quantity === undefined) {
+      return { ...ingredient, quantity: 0 }
     }
 
     return {
       ...ingredient,
-      amount: ingredient.amount * servings.value,
+      quantity: ingredient.quantity * servings.value,
     }
   }),
 )

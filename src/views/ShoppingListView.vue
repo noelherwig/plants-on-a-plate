@@ -61,8 +61,8 @@ const clearShoppingList = async () => {
 
           <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             <RecipeCard
-              v-for="recipe in recipes"
-              :key="recipe.id"
+              v-for="(recipe, index) in recipes"
+              :key="index"
               :recipe="recipe"
               variant="compact"
             />

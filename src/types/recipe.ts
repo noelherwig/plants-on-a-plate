@@ -1,3 +1,5 @@
+import type { Ingredient } from './ingredient'
+
 export interface Recipe {
   id: string
   title: string
@@ -13,12 +15,6 @@ export interface Recipe {
 export interface Statistics {
   calories: number
   protein: number
-}
-
-export interface Ingredient {
-  amount?: number // Base amount for 1 serving
-  unit?: string // Unit of measurement, E.G. "g", "ml"
-  type: string // Ingredient type, E.G. "flour", "milk", "eggs"
 }
 
 export interface CookingStep {

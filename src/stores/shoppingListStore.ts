@@ -1,7 +1,8 @@
-import type { Recipe, Ingredient } from '@/types/recipe'
+import type { Recipe } from '@/types/recipe'
 import { defineStore } from 'pinia'
 import { computed, ref } from 'vue'
 import { useRecipeStore } from './recipeStore'
+import type { Ingredient } from '@/types/ingredient'
 
 export const useShoppingListStore = defineStore('shoppingList', () => {
   const recipeStore = useRecipeStore()
@@ -18,9 +19,7 @@ export const useShoppingListStore = defineStore('shoppingList', () => {
   const add = (recipe: Recipe, newIngredients: Ingredient[]) => {
     recipeIds.value.push(recipe.id)
     newIngredients.forEach((newIngredient) => {
-      const existingIngredient = ingredients.value.find(
-        (item) => item.type === newIngredient.type && item.unit === newIngredient.unit,
-      )
+      const existingIngredient = ingredients.value.find(({ id }) => id === newIngredient.id)
 
       // If the ingredient does not exist yet, add it to the shopping list as-is
       if (!existingIngredient) {
@@ -28,14 +27,8 @@ export const useShoppingListStore = defineStore('shoppingList', () => {
         return
       }
 
-      // Existing ingredients without an amount ("Salt", "Olive oil") do not get added again
-      if (!existingIngredient.amount || !newIngredient.amount) {
-        existingIngredient.amount = undefined
-        return
-      }
-
-      // Existing ingredients get their amounts updated
-      existingIngredient.amount += newIngredient.amount
+      // Existing ingredients get their quantities updated
+      existingIngredient.quantity += newIngredient.quantity
     })
   }
 
