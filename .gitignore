@@ -19,6 +19,8 @@ coverage
 .env.local
 .env.staging
 
+*.cache
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
