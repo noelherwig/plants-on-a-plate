@@ -1,12 +1,11 @@
 <script setup lang="ts">
 import RecipeCard from '@/components/RecipeCard.vue'
 import type { Recipe } from '@/types/recipe'
-import type { FirestoreError } from 'firebase/firestore'
 
 defineProps<{
   recipes: Recipe[]
   pending: boolean
-  error: FirestoreError | undefined
+  error: boolean
 }>()
 </script>
 
@@ -23,6 +22,7 @@ defineProps<{
     <template v-else-if="error">
       <p class="col-span-full text-error text-center">
         Failed to load recipes. Please try again later.
+        {{ error }}
       </p>
     </template>
 

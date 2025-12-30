@@ -1,6 +1,10 @@
 <script setup lang="ts">
 import AppDrawer from './components/AppDrawer.vue'
 import ConfirmDialog from './components/ConfirmDialog.vue'
+import { useRecipeStore } from './stores/recipeStore'
+
+const recipeStore = useRecipeStore()
+recipeStore.fetchRecipes()
 </script>
 
 <template>
