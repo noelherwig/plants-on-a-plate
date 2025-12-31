@@ -8,13 +8,7 @@ import { PanelRightOpenIcon } from 'lucide-vue-next'
       <PanelRightOpenIcon :size="16" class="rotate-180" aria-hidden="true" />
     </label>
 
-    <a
-      class="font-bold flex gap-2 items-center"
-      href="https://github.com/noelherwig/plants-on-a-plate"
-      target="_blank"
-      rel="noopener noreferrer"
-      aria-label="Plants On A Plate on GitHub (opens in new tab)"
-    >
+    <RouterLink :to="{ name: 'Home' }" class="font-bold flex gap-2 items-center">
       <img
         alt="Plants on a Plate icon"
         src="@/assets/plants-on-a-plate.svg"
@@ -22,6 +16,6 @@ import { PanelRightOpenIcon } from 'lucide-vue-next'
         aria-hidden="true"
       />
       <span class="text-xl">Plants on a Plate</span>
-    </a>
+    </RouterLink>
   </nav>
 </template>
