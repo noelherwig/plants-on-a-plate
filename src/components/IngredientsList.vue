@@ -1,10 +1,15 @@
 <script setup lang="ts">
+import { useConfirmDialog } from '@/composable/useConfirmDialog'
 import { Unit as UnitEnum, type Ingredient } from '@/types/ingredient'
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
+import { onBeforeRouteLeave } from 'vue-router'
 
 defineProps<{ ingredients: Ingredient[] }>()
 
+const { confirmDialog } = useConfirmDialog()
+
 const checked = ref<Record<string, boolean>>({})
+const hasCheckedIngredients = computed(() => Object.values(checked.value).some(Boolean))
 
 const Unit = UnitEnum
 const unitMapper: Record<(typeof Unit)[keyof typeof Unit], string> = {
@@ -15,6 +20,18 @@ const unitMapper: Record<(typeof Unit)[keyof typeof Unit], string> = {
   [Unit.Clove]: ' clove(s) of ',
   [Unit.None]: ' ',
 }
+
+onBeforeRouteLeave(async () => {
+  if (!hasCheckedIngredients.value) {
+    return true
+  }
+
+  return await confirmDialog({
+    title: 'Ingredients checked',
+    message:
+      'You have checked off some ingredients. They will be cleared when you leave this page. Do you want to continue?',
+  })
+})
 </script>
 
 <template>
