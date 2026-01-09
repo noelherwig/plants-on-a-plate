@@ -39,4 +39,6 @@
   --color-blue-content: var(--color-sky-950);
   --color-yellow: var(--color-amber-400);
   --color-yellow-content: var(--color-amber-950);
+  --color-red: var(--color-red-400);
+  --color-red-content: var(--color-red-950);
 }

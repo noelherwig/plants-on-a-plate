@@ -22,7 +22,7 @@ const props = withDefaults(
   },
 )
 
-const router = useRouter()
+const $router = useRouter()
 
 const goToRandomRecipe = () => {
   if (!props.recipes.length) {
@@ -32,7 +32,7 @@ const goToRandomRecipe = () => {
   const { getRandomRecipe } = useRandomRecipe(props.recipes)
   const randomRecipe = getRandomRecipe()
   if (randomRecipe) {
-    router.push({ name: 'Recipe', params: { id: randomRecipe.id } })
+    $router.push({ name: 'Recipe', params: { id: randomRecipe.id } })
   }
 }
 </script>

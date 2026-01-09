@@ -30,6 +30,10 @@ const router = createRouter({
       name: 'Shopping list',
       component: () => import('../views/ShoppingListView.vue'),
     },
+    {
+      path: '/:pathMatch(.*)*',
+      component: () => import('../views/PageNotFoundView.vue'),
+    },
   ],
 })
 
