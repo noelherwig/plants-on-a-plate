@@ -2,6 +2,12 @@
 import AppNavbar from './AppNavbar.vue'
 import AppSidebar from './AppSidebar.vue'
 import AppToast from './AppToast.vue'
+import { ref } from 'vue'
+
+const mainRef = ref<HTMLElement>()
+const scrollToTop = () => mainRef.value && mainRef.value.scrollTo({ top: 0 })
+
+defineExpose({ scrollToTop })
 </script>
 
 <template>
@@ -18,7 +24,7 @@ import AppToast from './AppToast.vue'
         <AppNavbar />
       </header>
 
-      <main class="flex-1 min-h-0 overflow-y-scroll mt-16 p-4">
+      <main class="flex-1 min-h-0 overflow-y-scroll mt-16 p-4" ref="mainRef">
         <AppToast />
         <slot />
       </main>
